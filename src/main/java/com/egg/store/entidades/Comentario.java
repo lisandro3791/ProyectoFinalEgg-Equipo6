@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -26,9 +28,16 @@ public class Comentario implements Serializable {
     @GenericGenerator(name= "uuid", strategy = "uuid2")
     private String id;
     
-    private Usuario usuario;
-    private String texto;
     
+    @ManyToOne
+    private Usuario usuario;
+    
+    @ManyToOne
+    private Juego juego;
+    
+    private Integer puntuacion;    
+    private String texto;
+        
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
@@ -49,6 +58,22 @@ public class Comentario implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
+
+    public Integer getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(Integer puntuacion) {
+        this.puntuacion = puntuacion;
     }
 
     public String getTexto() {

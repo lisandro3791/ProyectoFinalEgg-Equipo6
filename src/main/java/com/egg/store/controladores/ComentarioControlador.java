@@ -7,6 +7,7 @@ package com.egg.store.controladores;
 
 import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Usuario;
+import com.egg.store.entidades.Juego;
 import com.egg.store.servicios.ComentarioServicio;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,7 @@ public class ComentarioControlador {
     }
     
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam Usuario usuario, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
+    public RedirectView guardar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam Integer puntuacion, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
         comentarioServicio.crear(usuario, texto, fecha);
         return new RedirectView("/comentarios/ver-todos");
     }
