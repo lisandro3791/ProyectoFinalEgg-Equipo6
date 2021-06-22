@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -25,11 +25,12 @@ public class UsuarioServicio {
  
      @ Transactional
     
-    public void crear(String nombre, String apellido ,  Date nacimiento, long dni){
+    public void crear(String nombre, String apellido ,String contraseña,  Date nacimiento, long dni){
         
         Usuario usuario = new Usuario ();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
+        usuario.setContraseña(contraseña);
         usuario.setNacimiento(nacimiento);
         usuario.setDni(dni);
         
