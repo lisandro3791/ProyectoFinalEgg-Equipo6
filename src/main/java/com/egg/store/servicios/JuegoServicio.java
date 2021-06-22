@@ -31,9 +31,8 @@ public class JuegoServicio {
     }
     
     @Transactional(readOnly = true)
-    public Optional<Juego> buscarPorId(String id){
-        Optional<Juego> autor= juegoRepositorio.findById(id);
-        return autor;
+    public Juego buscarPorId(String id){
+        return  juegoRepositorio.getOne(id);
     }
     
     @Transactional
@@ -48,6 +47,7 @@ public class JuegoServicio {
     }
     
    
-    
+   
+   
     
 }
