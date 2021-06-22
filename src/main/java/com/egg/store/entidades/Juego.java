@@ -52,11 +52,11 @@ public class Juego implements Serializable {
         this.genero = genero;
     }
 
-    public Integer getPuntaje() {
+    public double getPuntaje() {
         return puntaje;
     }
 
-    public void setPuntaje(Integer puntaje) {
+    public void setPuntaje(Double puntaje) {
         this.puntaje = puntaje;
     }
 
