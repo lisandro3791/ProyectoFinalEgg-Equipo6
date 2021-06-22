@@ -25,12 +25,13 @@ public class UsuarioServicio {
  
      @ Transactional
     
-    public void crear(String nombre, String apellido ,String contraseña,  Date nacimiento, long dni){
+    public void crear(String nombre, String apellido ,String contraseña,String mail,  Date nacimiento, long dni){
         
         Usuario usuario = new Usuario ();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setContraseña(contraseña);
+        usuario.setMail(mail);
         usuario.setNacimiento(nacimiento);
         usuario.setDni(dni);
         
