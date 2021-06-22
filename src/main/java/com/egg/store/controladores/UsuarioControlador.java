@@ -48,10 +48,10 @@ public class UsuarioControlador {
     
     
     @PostMapping("/guardar")
-    public RedirectView guardar( @RequestParam String nombre,@RequestParam String apellido, @RequestParam String contraseña,
+    public RedirectView guardar( @RequestParam String nombre,@RequestParam String apellido, @RequestParam String contraseña, @RequestParam String mail,
             @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd" ) Date nacimiento, @RequestParam long dni){
     
-            usuarioServicio.crear(nombre, apellido,contraseña, nacimiento, dni);
+            usuarioServicio.crear(nombre, apellido,contraseña,mail, nacimiento, dni);
        
         return new RedirectView("/usuarios/ver-todos") ;
     }
