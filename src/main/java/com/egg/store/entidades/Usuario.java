@@ -9,11 +9,10 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator( name= "uuid" , strategy = " uuid2") 
+    @GenericGenerator( name= "uuid3" , strategy = " uuid2") 
     private String id;
     
     private String nombre;
