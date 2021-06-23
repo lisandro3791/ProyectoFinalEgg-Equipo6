@@ -28,7 +28,7 @@ public class ComentarioControlador {
     @Autowired
     private ComentarioServicio comentarioServicio;
     
-    @GetMapping("/ver-todos")
+    @GetMapping
     public ModelAndView buscarTodos(){
         ModelAndView mav = new ModelAndView("comentarios-lista");
         List<Comentario> comentarios = comentarioServicio.buscarTodos();
@@ -37,19 +37,25 @@ public class ComentarioControlador {
     }
     
     @GetMapping("/crear")
-    public ModelAndView mostrarFormulario(){
-        return new ModelAndView("comentario-formulario");
+    public ModelAndView crearComentario(){
+        ModelAndView mav = new ModelAndView("comentario-formulario");
+        mav.addObject("comentario", new Comentario());
+        mav.addObject("title", "Crear Comentario");
+        mav.addObject("action", "guardar");
+        return mav;
     }
     
     @PostMapping("/comentar")
     public RedirectView guardar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
         comentarioServicio.comentar(usuario, juego, texto, fecha);
-        return new RedirectView("/comentarios/ver-todos");
+        return new RedirectView("/comentarios/");
+        //return new RedirectView("/juego/{$juego.getId()}");
     }
     
     @PostMapping("/puntuar")
     public RedirectView puntuar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam Integer puntuacion, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
         comentarioServicio.puntuar(usuario, juego, puntuacion, texto, fecha);
         return new RedirectView("/comentarios/ver-todos");
+        //return new RedirectView("/juego/{$juego.getId()}");
     }
 }
