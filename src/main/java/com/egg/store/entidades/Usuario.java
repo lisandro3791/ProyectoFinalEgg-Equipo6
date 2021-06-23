@@ -18,6 +18,8 @@ public class Usuario implements Serializable {
     
     private String nombre;
     private String apellido;
+    private String contraseña;
+    private String mail;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     private long dni;
@@ -63,6 +65,22 @@ public class Usuario implements Serializable {
 
     public void setDni(long dni) {
         this.dni = dni;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
     
     
