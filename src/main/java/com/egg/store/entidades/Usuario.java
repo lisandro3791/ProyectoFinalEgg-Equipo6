@@ -11,8 +11,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Usuario implements Serializable {
     @Id
-    @GeneratedValue(generator = "uuid3")
-    @GenericGenerator( name= "uuid3" , strategy = " uuid5") 
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator( name= "uuid3" , strategy = " uuid") 
 
     private String id;
     
