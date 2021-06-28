@@ -1,4 +1,3 @@
-
 package com.egg.store.controladores;
 
 import com.egg.store.entidades.Usuario;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -23,26 +21,28 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-       @GetMapping("/ver-todos") 
-    public ModelAndView buscarTodos(){
+    @GetMapping("/ver-todos")
+    public ModelAndView buscarTodos() {
         ModelAndView mav = new ModelAndView("usuarios-lista");
-        List<Usuario>usuarios = usuarioServicio.buscarTodos();
+        List<Usuario> usuarios = usuarioServicio.buscarTodos();
         mav.addObject("usuarios", usuarios);
-        return mav ;
-        
+        return mav;
+
     }
-    
+
     @GetMapping("/crear")
-    public ModelAndView formularioRegistro(){
-    return new ModelAndView("/registrarse");
+    public ModelAndView formularioRegistro() {
+        ModelAndView mav = new ModelAndView("registrarse");
+        mav.addObject("usuario", new Usuario());
+        return mav;
     }
-    
+
     @PostMapping("/guardar")
     public RedirectView guardar(
             @RequestParam String nombre, @RequestParam String apellido,
-            @RequestParam String password, @RequestParam long dni,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento, @RequestParam String email) {
-        usuarioServicio.crear(nombre, apellido, password, email, nacimiento, dni);
-        return new RedirectView("/perfil");
+            @RequestParam String contrasena, @RequestParam long dni,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento, @RequestParam String mail) {
+        usuarioServicio.crear(nombre, apellido, contrasena, mail, nacimiento, dni);
+        return new RedirectView("/usuario/ver-todos");
     }
 }

@@ -3,22 +3,21 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Usuario implements Serializable {
+    
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator( name= "uuid3" , strategy = " uuid") 
-
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     private String nombre;
     private String apellido;
-    private String contraseña;
+    private String contrasena;
     private String mail;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
@@ -27,11 +26,11 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id ;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,12 +66,12 @@ public class Usuario implements Serializable {
         this.dni = dni;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getMail() {
