@@ -64,9 +64,6 @@
                                         <li><a href="brand.html">Catalogo</a></li>
                                         <li><a href="special.html">Specials</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li class="last">
-                                            <a href="#"><img th:src="@{/images/search_icon.png}" alt="icon" /></a>
-                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -78,31 +75,22 @@
         <!--end header-->
         <!--Formulario de registro-->
         <div class="container">
-            <form th:action="@{/usuario/guardar}" method="post" th:object="${usuario}">
+            <form th:action="@{/juegos/guardar}" method="post" th:object="${juego}">
                 <div class="form-group">
                     <label>Nombre</label>
                     <input type="string" class="form-control" th:field="*{nombre}" aria-describedby="emailHelp" placeholder="Ingrese nombre" name="nombre">
                 </div>
                 <div class="form-group">
-                    <label>Apellido</label>
-                    <input type="string" class="form-control" th:field="*{apellido}" aria-describedby="emailHelp" placeholder="Ingrese Apellido" name="apellido">
+                    <label>Genero</label>
+                    <input type="string" class="form-control" th:field="*{genero}" aria-describedby="emailHelp" placeholder="Ingrese Apellido" name="genero">
                 </div>
                 <div class="form-group">
-                    <label>DNI</label>
-                    <input type="string" class="form-control" th:field="*{dni}" aria-describedby="emailHelp" placeholder="Ingrese DNI" name="dni">
+                    <label>url de Imagen</label>
+                    <input type="string" class="form-control" th:field="*{urlImagen}" aria-describedby="emailHelp" placeholder="Ingrese DNI" name="urlImagen">
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" th:field="*{mail}" aria-describedby="emailHelp" placeholder="Ingrese email" name="mail">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" th:field="*{contrasena}" placeholder="Ingrese Password" name="contrasena">
-                </div>
-                <div class="form-group">
-                    <label>Fecha de nacimiento</label>
-                    <input type="date" th:field="*{nacimiento}" class="form-control" name="nacimiento">
-                </div>
+                    <label>Precio</label>
+                    <input type="number" class="form-control" th:field="*{precio}" aria-describedby="emailHelp" placeholder="Ingrese email" name="precio">
 
                 <button type="submit" class="btn btn-primary">Registrarse</button>
             </form>
