@@ -31,7 +31,7 @@ public class JuegoControlador {
     }
     
     @GetMapping("/crear")
-    private ModelAndView crearJuego(){
+    public ModelAndView crearJuego(){
         ModelAndView mav=new ModelAndView("cargarJuegos");
         mav.addObject("juego", new Juego());
         return mav;
