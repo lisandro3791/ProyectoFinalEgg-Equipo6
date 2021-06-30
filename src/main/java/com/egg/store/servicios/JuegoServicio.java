@@ -16,11 +16,12 @@ public class JuegoServicio {
     private JuegoRepositorio juegoRepositorio;
     
     @Transactional
-    public void crear(String nombre, String genero,BigDecimal precio){
+    public void crear(String nombre, String genero,BigDecimal precio, String urlImagen){
         Juego juego=new Juego();
         juego.setNombre(nombre);
         juego.setGenero(genero);
         juego.setPrecio(precio);
+        juego.setUrlImagen(urlImagen);
         juegoRepositorio.save(juego);
     }
     
@@ -43,6 +44,10 @@ public class JuegoServicio {
     @Transactional
     public void buscarPorGenero(String genero){
         juegoRepositorio.buscarPorGenero(genero);
+    }
+    
+    public void modificar( String id, String nombre, String genero, BigDecimal precio, String urlImagen){
+        juegoRepositorio.modificar(id, nombre, genero, precio, urlImagen);
     }
     
    
