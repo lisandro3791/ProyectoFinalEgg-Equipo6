@@ -78,21 +78,21 @@
             <form th:action="@{/juegos/guardar}" method="post" th:object="${juego}">
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="string" class="form-control" th:field="*{nombre}" aria-describedby="emailHelp" placeholder="Ingrese nombre" name="nombre">
+                    <input type="string" class="form-control" th:field="*{nombre}" aria-describedby="emailHelp" placeholder="Ingrese nombre del juego" name="nombre">
                 </div>
                 <div class="form-group">
                     <label>Genero</label>
-                    <input type="string" class="form-control" th:field="*{genero}" aria-describedby="emailHelp" placeholder="Ingrese Apellido" name="genero">
+                    <input type="string" class="form-control" th:field="*{genero}" aria-describedby="emailHelp" placeholder="Ingrese Genero del juego" name="genero">
                 </div>
                 <div class="form-group">
                     <label>url de Imagen</label>
-                    <input type="string" class="form-control" th:field="*{urlImagen}" aria-describedby="emailHelp" placeholder="Ingrese DNI" name="urlImagen">
+                    <input type="string" class="form-control" th:field="*{urlImagen}" aria-describedby="emailHelp" placeholder="url de imagen" name="urlImagen">
                 </div>
                 <div class="form-group">
                     <label>Precio</label>
-                    <input type="number" class="form-control" th:field="*{precio}" aria-describedby="emailHelp" placeholder="Ingrese email" name="precio">
+                    <input type="number" class="form-control" th:field="*{precio}" aria-describedby="emailHelp" placeholder="Precio" name="precio">
 
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary">Cargar Juego</button>
             </form>
         </div>
         <!--Fin Formulario de registro-->

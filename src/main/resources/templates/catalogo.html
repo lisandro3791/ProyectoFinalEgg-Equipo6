@@ -1,4 +1,4 @@
-<!DOCTYPE html  >
+<!DOCTYPE html >
 <html lang="en" xmlns:th=" https://www.thymeleaf.org">
 
 <head>
@@ -9,181 +9,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Catalogo</title>
+    <title>Registrarse</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}"/>
     <!-- fevicon -->
     <link rel="icon" href="images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
     <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen"/>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-<!-- body -->
-
-<body class="main-layout">
-    <!-- loader  -->
-    <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
-    <!-- header -->
-    <header>
-        <!-- header inner -->
-        <div class="header">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/logo.png" alt="#"></a>
+    <!-- body -->
+    
+    <body class="main-layout ">
+        <!-- header -->
+        <header>
+            <!-- header inner -->
+            <div class="header">
+    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                            <div class="full">
+                                <div class="center-desk">
+                                    <div class="logo">
+                                        <a href="index.html"><img src="images/logo.png" alt="#"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                            <div class="menu-area">
+                                <div class="limit-box">
+                                    <nav class="main-menu">
+                                        <ul class="menu-area-main">
+                                            <li class="active"> <a th:href="@{/}">Home</a> </li>
+                                            <li> <a th:href="@{/usuario/crear}">Registrarse</a> </li>
+                                            <li><a th:href="@{/catalogo}">Catalogo</a></li>
+                                            <li><a th:href="@{/juegos/crear}">Cargar Juego</a></li>
+                                            <li class="last">
+                                                <a href="#"><img src="images/search_icon.png" alt="icon" /></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.html">Home</a> </li>
-                                        <li> <a href="about.html">About</a> </li>
-                                        <li><a href="brand.html">Brand</a></li>
-                                        <li><a href="special.html">Specials</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                        <li class="last">
-                                            <a href="#"><img src="images/search_icon.png" alt="icon" /></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 offset-md-6">
-                        <div class="location_icon_bottum">
-                            <ul>
-                                <li><img src="icon/call.png" />(+71)9876543109</li>
-                                <li><img src="icon/email.png" />demo@gmail.com</li>
-                                <li><img src="icon/loc.png" />Location</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        <!-- end header inner -->
-    </header>
+            <!-- end header inner -->
+        </header>
     <!-- end header -->
-    <div class="brand_color">
+    <div class="brand-bg">
         <div class="container">
             <div class="row">
+                <table class="table table-hover table-sm table-bordered">
+                    <thead class="table-secondary text-center">
+                    <tr>
+                        <th class="col-md-1 ps-2" scope="col">Nombre</th>
+                        <th class="col-md-3 px-md-2" scope="col">Genero</th>
+                        <th class="col-md-3 px-md-2" scope="col">puntaje</th>
+                        <th class="col-md-1 ps-2" scope="col">imagen</th>
+                        <th class="col-md-2 px-md-2" scope="col">Precio</th>
+                        <th class="col-md-3 px-md-2" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="juego : ${juegos}" >
+                        <td class="col-md-3 px-md-2" th:text="${juego.nombre}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${juego.genero}"></td>
+                         <td class="col-md-3 px-md-2" ></td>
+                        <td class="col-md-3 px-md-2" ><img th:src="${juego.urlImagen}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${juego.precio}"></td>
+                    </tr>
+                    </tbody>
+                </table>
                 <div class="col-md-12">
-                    <div class="titlepage">
-                        <h2>Nuestro catalogo</h2>
-                    </div>
+                    <a class="read-more" href="special.html">VER MAS</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- brand -->
-    <div class="brand">
-        <div class="container">
-
-        </div>
-        <div class="brand-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                        <div class="brand_box">
-                            <img src="images/1.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                        <div class="brand_box">
-                            <img src="images/2.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                        <div class="brand_box">
-                            <img src="images/3.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                        <div class="brand_box">
-                            <img src="images/4.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 mrgn">
-                        <div class="brand_box">
-                            <img src="images/5.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 mrgn">
-                        <div class="brand_box">
-                            <img src="images/6.png" alt="img" />
-                            <h3>$<strong class="red">100</strong></h3>
-                            <span>Mobile Phone</span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <a class="read-more">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
     <!-- end brand -->
 

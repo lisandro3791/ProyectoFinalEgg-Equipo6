@@ -22,11 +22,12 @@ public class JuegoControlador {
     private JuegoServicio juegoServicio;
     
     
-    @GetMapping("/ver-todos")
-    public ModelAndView mostrarTodos(){
-        ModelAndView mav=new ModelAndView("juegos-lista");
-        List<Juego> juegos= juegoServicio.buscarTodos();
-        mav.addObject("juegos", juegos);
+  
+      @GetMapping("/ver-todo")
+   public ModelAndView mostrarTodos(){
+        ModelAndView mav = new ModelAndView("catalogo");
+        List<Juego> juego=juegoServicio.buscarTodos();
+        mav.addObject("juegos", juego);
         return mav;
     }
     
@@ -39,7 +40,7 @@ public class JuegoControlador {
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam String nombre,@RequestParam String genero,@RequestParam BigDecimal precio,@RequestParam String urlImagen){
         juegoServicio.crear(nombre, genero, precio,urlImagen);
-        return new RedirectView("/ver-todos");
+        return new RedirectView("/juegos/ver-todo");
     }
     
     @GetMapping("/editar/{id}")
