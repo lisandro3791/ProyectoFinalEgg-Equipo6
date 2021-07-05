@@ -24,7 +24,7 @@ public class Comentario implements Serializable {
     
     @Id
     @GeneratedValue (generator = "uuid")
-    @GenericGenerator(name= "uuid1", strategy = "uuid2")
+    @GenericGenerator(name= "uuid", strategy = "uuid2")
     private String id;
     
     

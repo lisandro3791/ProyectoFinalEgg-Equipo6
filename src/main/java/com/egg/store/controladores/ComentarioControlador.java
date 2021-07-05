@@ -45,16 +45,10 @@ public class ComentarioControlador {
         return mav;
     }
     
-    @PostMapping("/comentar")
-    public RedirectView guardar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
-        comentarioServicio.comentar(usuario, juego, texto, fecha);
-        return new RedirectView("/comentarios/");
-        //return new RedirectView("/juego/{$juego.getId()}");
-    }
     
-    @PostMapping("/puntuar")
-    public RedirectView puntuar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam Integer puntuacion, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
-        comentarioServicio.puntuar(usuario, juego, puntuacion, texto, fecha);
+    @PostMapping("/comentar")
+    public RedirectView comentar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam Integer puntuacion, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
+        comentarioServicio.comentar(usuario, juego, puntuacion, texto, fecha);
         return new RedirectView("/comentarios/ver-todos");
         //return new RedirectView("/juego/{$juego.getId()}");
     }
