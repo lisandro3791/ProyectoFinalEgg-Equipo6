@@ -22,7 +22,7 @@ public interface ComentarioRepositorio extends JpaRepository<Comentario, String>
     
     
     @Modifying
-    @Query("UPDATE Comentario c  SET c.texto=:texto, WHERE c.id=:id")
+    @Query("UPDATE Comentario c  SET c.texto=:texto WHERE c.id=:id")
     void modificar(@Param("id") String id,@Param("texto") String texto);
     
     
