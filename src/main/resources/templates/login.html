@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmls="https://www.w3.org/1999/xhtml"  xmls:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Login</title>
+    </head>
+    <body>
+        
+        <form th:action="@{/login}" method="post">
+            <imput type="text" name="username" placeholder ="Nombre de Usuario">
+            <imput type="password" name="password" placeholder ="Contraseña">
+            <button type="submit">Login</button>
+                        
+            
+        </form>
+        
+        
+    </body>
+</html>
