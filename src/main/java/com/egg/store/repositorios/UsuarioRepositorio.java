@@ -23,9 +23,9 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
    
     
     //Modifica un Usuario en los parametros que se pasan cuando coincide el campo de DNI
-    @Modifying
-    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido, u.fechaNacimiento = :fechaNacimiento WHERE u.dni = :dni")
-    void modificar (@Param ("dni") Long dni, @Param("nombre") String nombre, @Param ("apellido") String apellido, @Param("fechaNacimiento") Date fechaNacimiento);
+    @Modifying                                                              // , u.fechaNacimiento = :fechaNacimiento
+    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido  WHERE u.dni = :dni")
+    void modificar (@Param ("dni") Long dni, @Param("nombre") String nombre, @Param ("apellido") String apellido);//, @Param("fechaNacimiento") Date fechaNacimiento
     
     //lista todos los usuarios por nombre
     @Query("SELECT u FROM Usuario u WHERE u.nombre= :n")
