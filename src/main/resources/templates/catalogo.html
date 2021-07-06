@@ -44,45 +44,31 @@
         <div class="header" th:replace="fragments :: header"></div>
         <!-- end header inner -->
     </header>
+
+<div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<form class="flexsearch--form" action="#" method="post">
+				<div class="flexsearch--input-wrapper">
+					<input class="flexsearch--input" type="search" placeholder="Buscar por nombre">
+				</div>
+				<input class="flexsearch--submit" type="submit" value="&#10140;"/>
+			</form>
+		</div>
+</div>
     <!-- end header -->
-    <!-- <div class="brand-bg">
-        <div class="container">
-            <div class="row">
-                <table class="table table-hover table-sm table-bordered">
-                    <thead class="table-secondary text-center">
-                        <tr>
-                            <th class="col-md-1 ps-2" scope="col">Nombre</th>
-                            <th class="col-md-3 px-md-2" scope="col">Genero</th>
-                            <th class="col-md-3 px-md-2" scope="col">puntaje</th>
-                            <th class="col-md-1 ps-2" scope="col">imagen</th>
-                            <th class="col-md-2 px-md-2" scope="col">Precio</th>
-                            <th class="col-md-3 px-md-2" scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="juego : ${juegos}">
-                            <td class="col-md-3 px-md-2" th:text="${juego.nombre}"></td>
-                            <td class="col-md-3 px-md-2" th:text="${juego.genero}"></td>
-                            <td class="col-md-3 px-md-2"></td>
-                            <td class="col-md-3 px-md-2"><img th:src="${juego.urlImagen}"></td>
-                            <td class="col-md-3 px-md-2" th:text="${juego.precio}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="col-md-12">
-                    <a class="read-more" href="special.html">VER MAS</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="brand-bg">
         <div class="container">
             <div class="row">
                 <div th:each="juego : ${juegos}" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                    <div class="brand_box">
-                        <img th:src="${juego.urlImagen}" alt="img" />
+                    <div class="brand_box" >
+                        <a th:href=@{/juegos/__${juego.id}__}>
+                            <img th:src="${juego.urlImagen}"   alt="img" />
+                        </a>
                         <h3>$<strong class="red" th:text="${juego.precio}"></strong></h3>
                         <span th:text="${juego.nombre}"></span>
+                        <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post">
+                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                        </form>
                     </div>
                 </div>
             </div>
