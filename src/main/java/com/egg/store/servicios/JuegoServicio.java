@@ -55,7 +55,7 @@ public class JuegoServicio {
     
     @Transactional
     public List<Juego> buscarPorNombre(String nombre){
-       return juegoRepositorio.findByNombre(nombre);
+       return juegoRepositorio.buscarPorNombre(nombre);
     }
     
    

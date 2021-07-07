@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,16 +68,19 @@ public class JuegoControlador {
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar(@PathVariable String id){
         juegoServicio.eliminar(id);
-        return new RedirectView("/juegos/ver-todos");
+        return new RedirectView("/juegos/ver-todo");
     }
     
    
     
-    @GetMapping("/ver/{nombre}")
-    public ModelAndView mostrarJuego(@RequestParam String nombre){
-        ModelAndView mav=new ModelAndView("catalogo");
-        mav.addObject("juegos", juegoServicio.buscarPorNombre(nombre));
+    @GetMapping("/ver")
+    public ModelAndView mostrarJuego(@RequestParam("nombre") String nombre){
+        ModelAndView mav= new ModelAndView("catalogo");
+       mav.addObject("juegos", juegoServicio.buscarPorNombre(nombre));
+        
         return mav;
     }
+    
+    
   
 }
