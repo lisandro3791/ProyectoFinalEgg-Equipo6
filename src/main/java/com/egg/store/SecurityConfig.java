@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //revisar si el camino de los templates es  " /images/* "
         http
                 .authorizeRequests()
-                    .antMatchers("css/**", "/images/**").permitAll()
+                    .antMatchers("/css/**", "/images/**").permitAll()
                     .antMatchers("/**").permitAll() //.authenticated()
                 //4631
                .and()
