@@ -63,9 +63,9 @@ public class UsuarioServicio implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            Usuario usuario = usuarioRepositorio.buscarPorNombreDeUsuaruio(username);
+            Usuario usuario = usuarioRepositorio.buscarPorMail(username);
             if (usuario == null){
-                 throws new UsernameNotFoundException ("no se encontro ningun usuario con username" + username);
+               throw new UsernameNotFoundException ("no se encontro ningun usuario con username" + username);
             }
  
         return new User(usuario.getMail(), usuario.getContrasena(), Collections.emptyList());
