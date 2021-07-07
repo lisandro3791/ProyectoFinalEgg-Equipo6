@@ -18,11 +18,8 @@ public class Usuario implements Serializable {
     
     private String nombre;
     private String apellido;
-    
-  //  @Column( unique = true)
-  //  private String username;
-    
     private String contrasena;
+    @Column( unique = true)
     private String mail;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
