@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JuegoRepositorio extends JpaRepository <Juego,String>{
     
-    @Query("SELECT j FROM Juego j WHERE j.genero = :genero ")
+    @Query("SELECT j FROM Juego j WHERE j.genero like :genero")
     List<Juego> buscarPorGenero(@Param("genero")String genero);
     
     
@@ -21,4 +21,11 @@ public interface JuegoRepositorio extends JpaRepository <Juego,String>{
     @Query("UPDATE Juego j  SET j.nombre=:nombre,j.genero=:genero,j.precio=:precio,j.urlImagen=:urlImagen WHERE j.id=:id")
     void modificar(@Param("id") String id,@Param("nombre") String nombre,@Param("genero") String genero,@Param("precio") BigDecimal precio,@Param("urlImagen") String urlImagen);
     
+    
+    @Query("SELECT j FROM Juego j WHERE j.nombre like :nombre")
+    List<Juego> buscarPorNombre(@Param("nombre")String nombre); 
+    
+    
+    
+    List<Juego> findByNombre(String nombre);
 }

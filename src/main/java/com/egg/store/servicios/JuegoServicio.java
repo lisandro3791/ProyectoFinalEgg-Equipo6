@@ -21,6 +21,7 @@ public class JuegoServicio {
         juego.setNombre(nombre);
         juego.setGenero(genero);
         juego.setPrecio(precio);
+        juego.setPuntaje(0.0);
         juego.setUrlImagen(urlImagen);
         juegoRepositorio.save(juego);
     }
@@ -42,12 +43,19 @@ public class JuegoServicio {
     
     
     @Transactional
-    public void buscarPorGenero(String genero){
-        juegoRepositorio.buscarPorGenero(genero);
+    public List<Juego> buscarPorGenero(String genero){
+        List<Juego> juegos =juegoRepositorio.buscarPorGenero(genero);
+        return juegos;
     }
     
+    @Transactional
     public void modificar( String id, String nombre, String genero, BigDecimal precio, String urlImagen){
         juegoRepositorio.modificar(id, nombre, genero, precio, urlImagen);
+    }
+    
+    @Transactional
+    public List<Juego> buscarPorNombre(String nombre){
+       return juegoRepositorio.findByNombre(nombre);
     }
     
    
