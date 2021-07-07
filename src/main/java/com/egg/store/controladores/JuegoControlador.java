@@ -70,6 +70,13 @@ public class JuegoControlador {
         return new RedirectView("/juegos/ver-todos");
     }
     
-    
    
+    
+    @GetMapping("/ver/{nombre}")
+    public ModelAndView mostrarJuego(@RequestParam String nombre){
+        ModelAndView mav=new ModelAndView("catalogo");
+        mav.addObject("juegos", juegoServicio.buscarPorNombre(nombre));
+        return mav;
+    }
+  
 }
