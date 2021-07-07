@@ -50,14 +50,6 @@ public class JuegoControlador {
         return mav;
     }
     
-    @GetMapping("/{id}")
-    public ModelAndView verJuego(@PathVariable String id){
-        ModelAndView mav=new ModelAndView("juegoindividual");
-        mav.addObject("juego", juegoServicio.buscarPorId(id));
-        return mav;
-    }
-    
-    
     @PostMapping("/modificar")
     public RedirectView modificar(@RequestParam String id,@RequestParam String nombre,@RequestParam String genero,@RequestParam BigDecimal precio,@RequestParam String urlImagen){
         juegoServicio.modificar(id, nombre, genero, precio, urlImagen);
@@ -70,13 +62,6 @@ public class JuegoControlador {
         return new RedirectView("/juegos/ver-todos");
     }
     
-   
     
-    @GetMapping("/ver/{nombre}")
-    public ModelAndView mostrarJuego(@RequestParam String nombre){
-        ModelAndView mav=new ModelAndView("catalogo");
-        mav.addObject("juegos", juegoServicio.buscarPorNombre(nombre));
-        return mav;
-    }
-  
+    
 }
