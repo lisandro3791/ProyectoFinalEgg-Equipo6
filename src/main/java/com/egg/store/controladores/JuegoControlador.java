@@ -1,7 +1,9 @@
 
 package com.egg.store.controladores;
 
+import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Juego;
+import com.egg.store.servicios.ComentarioServicio;
 import com.egg.store.servicios.JuegoServicio;
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,6 +23,9 @@ import org.springframework.web.servlet.view.RedirectView;
 public class JuegoControlador {
     @Autowired
     private JuegoServicio juegoServicio;
+    
+    @Autowired
+    private ComentarioServicio comentarioServicio;
     
     
   
@@ -55,6 +60,10 @@ public class JuegoControlador {
     public ModelAndView verJuego(@PathVariable String id){
         ModelAndView mav=new ModelAndView("juegoindividual");
         mav.addObject("juego", juegoServicio.buscarPorId(id));
+        mav.addObject("promedio", juegoServicio.calcularPromedio(id));
+        List<Comentario> comentarios=comentarioServicio.buscarPorJuego(id);
+        mav.addObject("comentarios", comentarios);
+        
         return mav;
     }
     
