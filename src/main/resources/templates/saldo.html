@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>Cargar Saldo</title>
+    <title>Cargar saldo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +72,9 @@
 
 
 <body>
+ 
 <div class="container">
+    
     <div class="main-body">
     
           <!-- Breadcrumb -->
@@ -87,6 +89,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="letras">
+                        
                       <h4>Antonino Estevez</h4>
                       <hr>
                       <h5>Saldo disponible:</h5>
@@ -101,7 +104,7 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div >
-                   
+                  
                    <h1 class="titulosaldo">Ingrese la cantidad a cargar:</h1>
                   </div>
                   <hr>
@@ -114,7 +117,19 @@
                   </div>
                   <hr>
                   <div class=titulosaldo>
-                    <button type="submit" class="botonroj"><a href="saldo.html"> Realizar recarga </a></button>
+                    <a href="javascript:flop()"> Realizar recarga </a></button>
+                    <div class="ventana" id="vent">
+                       <div class="fieldd"> ¿Desea confirmar la carga? </div>
+                        
+                        <hr>
+                        
+                        
+                        <div class="fieldd">
+                        <button type="submit" class="botonver mt-3 mb-3" > Confirmar </button>
+                
+                        <button class="botonroj"> Cancelar </button>
+                    </div>
+                       </div>
                 </form>
                   </div>
                   
@@ -207,7 +222,7 @@ body{
 a {
 
 text-decoration: none;
-color: white;
+color: rgb(0, 0, 0);
 
 
 }
@@ -228,8 +243,8 @@ color: white;
 
 .botonroj:hover {
 
-    background-color:rgb(255, 255, 255);
-    color: rgb(133, 0, 0);
+    background-color:rgb(243, 125, 125);
+    color: rgb(255, 255, 255);
     height: 40px;
     border-top: 0px;
     border-left: 0px;
@@ -240,6 +255,8 @@ color: white;
     
 
 }
+
+
 
 .botonrojj {
     background-color: rgb(255, 255, 255);
@@ -260,6 +277,25 @@ color: white;
     
 }
 
+.botonver {
+    background-color: rgb(4, 170, 40);
+    color: rgb(255, 255, 255);
+    height: 40px;
+    border-top: 0px;
+    border-left: 0px;
+    border-radius: 3px;
+    border-color: rgba(83, 83, 83, 0.61);
+    padding: 8px;    
+    
+}
+
+.botonver:hover {
+    background-color: rgb(12, 204, 76);
+    color: rgb(221, 204, 204);
+     
+    
+}
+
 .colorbarra {
 
 background-color: darkred !important;
@@ -275,6 +311,26 @@ background-color: darkred !important;
 
 
 display: inline;
+
+}
+
+.ventana {
+
+background-color: #aaaaaae7;
+border-radius: 10px;
+color: black;
+border: solid 1px rgb(204, 0, 0);;
+text-align: center;
+position: absolute !important;
+font-size: 18px;
+width: 60%;
+padding: 33px;
+min-height: 150px;
+left: -22px;
+top:10%;
+z-index: 100;
+display: none;
+
 
 }
 
@@ -300,9 +356,22 @@ text-align: center;
 
 }
 
+.fieldd {
+
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: solid 1px rgb(143, 143, 143);
+}
+
 </style>
 
 <script type="text/javascript">
+
+function flop() {
+
+document.getElementById("vent").style.display="block";
+}
 
 </script>
 </body>
