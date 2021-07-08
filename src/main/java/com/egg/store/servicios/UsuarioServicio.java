@@ -48,28 +48,4 @@ public class UsuarioServicio {
         
     }
     
-
-        @Transactional(readOnly =true)
-        public List<Usuario> buscarPorNombre (String nombre){
-            return usuarioRepositorio.buscarPorNombre(nombre);
-        }
-        
-    @Transactional(readOnly = true)
-    public Usuario buscarPorId(Long id){
-        return  usuarioRepositorio.buscarPorId(id);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            Usuario usuario = usuarioRepositorio.buscarPorMail(username);
-            if (usuario == null){
-               throw new UsernameNotFoundException ("no se encontro ningun usuario con username" + username);
-            }
- 
-        return new User(usuario.getMail(), usuario.getContrasena(), Collections.emptyList());
-        }
-
-        
-
-
 }
