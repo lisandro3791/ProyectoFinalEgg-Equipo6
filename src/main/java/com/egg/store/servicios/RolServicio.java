@@ -1,5 +1,6 @@
 package com.egg.store.servicios;
 
+import com.egg.store.entidades.Rol;
 import com.egg.store.repositorios.RolRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class RolServicio {
     @Transactional
     public void crear(String nombre){
         Rol rol=new Rol();
-        rol.
+        rol.setNombre(nombre);
+        rolRepositorio.save(rol);
     }
 }
