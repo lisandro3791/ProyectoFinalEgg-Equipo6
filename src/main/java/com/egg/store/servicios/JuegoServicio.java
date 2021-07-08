@@ -1,7 +1,9 @@
 
 package com.egg.store.servicios;
 
+import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Juego;
+import com.egg.store.repositorios.ComentarioRepositorio;
 import com.egg.store.repositorios.JuegoRepositorio;
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,6 +16,9 @@ public class JuegoServicio {
     
     @Autowired
     private JuegoRepositorio juegoRepositorio;
+    
+    @Autowired
+    private ComentarioRepositorio comentarioRepositorio;
     
     @Transactional
     public void crear(String nombre, String genero,BigDecimal precio, String urlImagen){
@@ -48,6 +53,8 @@ public class JuegoServicio {
         return juegos;
     }
     
+   
+    
     @Transactional
     public void modificar( String id, String nombre, String genero, BigDecimal precio, String urlImagen){
         juegoRepositorio.modificar(id, nombre, genero, precio, urlImagen);
@@ -59,7 +66,28 @@ public class JuegoServicio {
        return juegoRepositorio.buscarPorNombre(nom);
     }
     
-   
+    @Transactional(readOnly = true)
+    public Double calcularPromedio(String juegoId){
+        System.out.println("calcularPromedio llamada");
+        Juego juego = this.buscarPorId(juegoId);
+        List<Comentario> lista = comentarioRepositorio.buscarPorJuego(juego);
+        
+        int suma = 0;
+        int contador = 0;
+        for( Comentario c : lista){
+            suma += c.getPuntuacion();
+            contador +=1;           
+        }
+        System.out.println(suma);
+        System.out.println(contador);
+        if (contador == 0){
+            return 0.0;
+        }else{
+            return (suma+0.0)/contador;
+        }
+        
+        
+    }
  
    
     
