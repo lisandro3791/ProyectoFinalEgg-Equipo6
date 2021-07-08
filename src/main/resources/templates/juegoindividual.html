@@ -1,73 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <!-- basic -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- mobile metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-        <!-- site metas -->
-        <title>Catalogo</title>
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- bootstrap css -->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
-        <!-- style css -->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-        <!-- Responsive-->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
-        <!-- fevicon -->
-        <link rel="icon" href="images/fevicon.png" type="image/gif" />
-        <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
-        <!-- Tweaks for older IEs-->
-        <link rel="stylesheet" type="text/css"
-              href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-        <!-- owl stylesheets -->
-        <link rel="stylesheet" type="text/css"
-              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}" />
-        <link rel="stylesheet" type="text/css"
-              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
 
-    </head>
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Catalogo</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <!-- Responsive-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" type="text/css"
+        href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" type="text/css"
+        th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}" />
+    <link rel="stylesheet" type="text/css"
+        th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
+
+</head>
+    
     <header>
-        <!-- header inner -->
-        <div class="header" th:replace="fragments :: header"></div>
-        <!-- end header inner -->
-    </header>
-    <body>
-        <div class="container">
-            <div class="main-body">
+      <!-- header inner -->
+      <div class="header" th:replace="fragments :: header"></div>
+      <!-- end header inner -->
+  </header>
 
-
-                <!-- Breadcrumb -->
-
-                <div></br></div>
-                <!-- /Breadcrumb -->
-                <div class="titubiblio"><hr>
-                    <h1 class="interior" th:text="${juego.nombre}"></h1>
-
+<body>
+<div class="container">
+    <div class="main-body">
+        
+    
+          <!-- Breadcrumb -->
+        
+         <div></br></div>
+          <!-- /Breadcrumb -->
+          <div class="titubiblio"><hr>
+              <h1 class="interior" th:text="${juego.nombre}"></h1>
+              
+            </div>
+          <hr>
+          <div class="row gutters-sm">              
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img th:src="${juego.urlImagen}" alt="img" />
+                    <div class="letras">
+                        <hr>
+                      <h3 class="titulojuegos" th:text="${juego.nombre}"></h3>
+                      
+                    </div>
+                  </div>
                 </div>
-                <hr>
-                <div class="row gutters-sm">              
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img th:src="${juego.urlImagen}" 
-                                         alt="Admin" width="350" class="imagenjuegos">
-                                    <div class="letras">
-                                        <hr>
-                                        <h3 class="titulojuegos" th:text=${juego.nombre}></h3>
+              </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Nombre</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary" th:text="${juego.nombre}">
+                        
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Genero</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary" th:text="${juego.genero}">
+                        
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Puntaje promedio</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary" th:text="${juego.puntaje}">
+                        
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">$</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary"th:text="${juego.precio}">
+                      
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Descripcion</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary"> 
+                      </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card mb-3">

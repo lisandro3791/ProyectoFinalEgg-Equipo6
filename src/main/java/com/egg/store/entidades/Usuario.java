@@ -1,7 +1,6 @@
 package com.egg.store.entidades;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +18,10 @@ public class Usuario implements Serializable {
     private String nombre;
     private String apellido;
     private String contrasena;
-    @Column( unique = true)
     private String mail;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     private long dni;
-    
 
     public Usuario() {
     }
@@ -84,8 +81,6 @@ public class Usuario implements Serializable {
     public void setMail(String mail) {
         this.mail = mail;
     }
-
-   
     
     
 }

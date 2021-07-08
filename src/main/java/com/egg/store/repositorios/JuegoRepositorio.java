@@ -27,5 +27,5 @@ public interface JuegoRepositorio extends JpaRepository <Juego,String>{
     
     
     
-    List<Juego> findByNombre(String nombre);
+    
 }

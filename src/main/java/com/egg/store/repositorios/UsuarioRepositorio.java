@@ -6,12 +6,7 @@
 package com.egg.store.repositorios;
 
 import com.egg.store.entidades.Usuario;
-import java.util.Date;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -20,6 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
+
    
     
     //Modifica un Usuario en los parametros que se pasan cuando coincide el campo de DNI
@@ -37,6 +33,8 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
     
     @Query("SELECT u FROM Usuario u WHERE u.mail = :mail")
     Usuario buscarPorMail ( @Param("mail") String mail);
+
+
     
     
 }
