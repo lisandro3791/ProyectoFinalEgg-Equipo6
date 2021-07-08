@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,6 +25,9 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     private long dni;
+    
+    @ManyToOne
+    private Rol rol;
     
 
     public Usuario() {
@@ -84,6 +88,16 @@ public class Usuario implements Serializable {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
 
    
     
