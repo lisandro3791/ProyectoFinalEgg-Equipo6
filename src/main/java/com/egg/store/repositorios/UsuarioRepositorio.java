@@ -15,26 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
-
-   
-    
-    //Modifica un Usuario en los parametros que se pasan cuando coincide el campo de DNI
-    @Modifying                                                              // , u.fechaNacimiento = :fechaNacimiento
-    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido  WHERE u.dni = :dni")
-    void modificar (@Param ("dni") Long dni, @Param("nombre") String nombre, @Param ("apellido") String apellido);//, @Param("fechaNacimiento") Date fechaNacimiento
-    
-    //lista todos los usuarios por nombre
-    @Query("SELECT u FROM Usuario u WHERE u.nombre= :n")
-    List<Usuario> buscarPorNombre(@Param ("n") String nombre);
-    
-    @Query("SELECT u FROM Usuario u WHERE u.id= :id")
-    Usuario buscarPorId(@Param ("id") Long id);
-    
-    
-    @Query("SELECT u FROM Usuario u WHERE u.mail = :mail")
-    Usuario buscarPorMail ( @Param("mail") String mail);
-
-
     
     
 }

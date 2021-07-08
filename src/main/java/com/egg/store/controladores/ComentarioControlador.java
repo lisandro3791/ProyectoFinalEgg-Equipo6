@@ -47,9 +47,9 @@ public class ComentarioControlador {
     
     
     @PostMapping("/comentar")
-    public RedirectView comentar(@RequestParam Long usuarioId, @RequestParam String juegoId, @RequestParam String puntuacion, @RequestParam String texto){
-        comentarioServicio.comentar(usuarioId, juegoId, Integer.parseInt(puntuacion), texto);
-        return new RedirectView("/juegos/" + juegoId);
-        
+    public RedirectView comentar(@RequestParam Usuario usuario, @RequestParam Juego juego, @RequestParam Integer puntuacion, @RequestParam String texto, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha){
+        comentarioServicio.comentar(usuario, juego, puntuacion, texto, fecha);
+        return new RedirectView("/comentarios/ver-todos");
+        //return new RedirectView("/juego/{$juego.getId()}");
     }
 }
