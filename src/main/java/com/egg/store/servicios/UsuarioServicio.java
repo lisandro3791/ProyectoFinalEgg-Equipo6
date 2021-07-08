@@ -60,6 +60,11 @@ public class UsuarioServicio implements UserDetailsService{
         public List<Usuario> buscarPorNombre (String nombre){
             return usuarioRepositorio.buscarPorNombre(nombre);
         }
+        
+    @Transactional(readOnly = true)
+    public Usuario buscarPorId(Long id){
+        return  usuarioRepositorio.buscarPorId(id);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
