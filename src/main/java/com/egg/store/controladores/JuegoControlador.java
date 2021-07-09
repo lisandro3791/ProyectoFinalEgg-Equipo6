@@ -3,6 +3,7 @@ package com.egg.store.controladores;
 
 import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Juego;
+import com.egg.store.servicios.ComentarioServicio;
 import com.egg.store.servicios.JuegoServicio;
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,7 +24,9 @@ public class JuegoControlador {
     @Autowired
     private JuegoServicio juegoServicio;
     
-    
+    @Autowired
+    private ComentarioServicio comentarioServicio;
+  
   
       @GetMapping("/ver-todo")
    public ModelAndView mostrarTodos(){
