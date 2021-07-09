@@ -1,10 +1,13 @@
 package com.egg.store.servicios;
 
+import com.egg.store.entidades.Usuario;
 import java.util.Date;
 import org.springframework.stereotype.Service;
 import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Juego;
 import com.egg.store.repositorios.ComentarioRepositorio;
+import com.egg.store.repositorios.JuegoRepositorio;
+import com.egg.store.repositorios.UsuarioRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
