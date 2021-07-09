@@ -1,6 +1,5 @@
 package com.egg.store.servicios;
 
-import com.egg.store.entidades.Usuario;
 import java.util.Date;
 import org.springframework.stereotype.Service;
 import com.egg.store.entidades.Comentario;
@@ -16,16 +15,21 @@ public class ComentarioServicio {
     @Autowired
     private ComentarioRepositorio comentarioRepositorio;
     
+    @Autowired// va autowired?
+    private UsuarioServicio usuarioServicio;
+    
+    @Autowired// va autowired?
+    private JuegoServicio juegoServicio;
     
     @Transactional
-    public void comentar(Usuario usuario, Juego juego, Integer puntuacion, String texto, Date fecha) {
+    public void comentar(Long usuarioId, String juegoId, Integer puntuacion, String texto) {
         //Crea un comentario con puntuación
         Comentario comentario = new Comentario();
-        comentario.setUsuario(usuario);
-        comentario.setJuego(juego);
+        comentario.setUsuario(usuarioServicio.buscarPorId(usuarioId));
+        comentario.setJuego(juegoServicio.buscarPorId(juegoId));
         comentario.setPuntuacion(puntuacion);
         comentario.setTexto(texto);
-        comentario.setFecha(fecha);
+        comentario.setFecha(new Date());
 
         comentarioRepositorio.save(comentario);
 
@@ -47,8 +51,9 @@ public class ComentarioServicio {
     }
     
     @Transactional
-    public void buscarPorJuego(Juego juego){
-        comentarioRepositorio.buscarPorJuego(juego);
+    public List<Comentario> buscarPorJuego(String juegoId){
+        Juego juego = juegoServicio.buscarPorId(juegoId);
+        return comentarioRepositorio.buscarPorJuego(juego);
     }
     
     @Transactional
