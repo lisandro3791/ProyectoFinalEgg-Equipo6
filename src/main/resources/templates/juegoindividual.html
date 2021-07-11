@@ -205,7 +205,7 @@
                     </form>
                 </div>
 
-                <div th:unless="${comentarios.isEmpty()}" class="table-responsive" style="background-color: white;">
+                <div th:unless="${comentarios.isEmpty()}" class="table-responsive" style="background-color: white; color:black;">
                     <table class="table table-hover table-sm table-bordered">
                         <thead class="table-secondary text-center">
                             <tr>
@@ -216,7 +216,8 @@
                         </thead>
                         <tbody>
                             <tr th:each="comentario : ${comentarios}">
-                                <td class="col-md-4 px-md-2" th:text="${comentario.usuario.nombre}"></td>
+                                <td class="col-md-4 px-md-2" th:if="${comentario.usuario}" th:text="${comentario.usuario.nombre}"></td>
+                                <td class="col-md-4 px-md-2" th:if="${comentario.usuario == null }" th:text="'Usuario Inexistente'"></td>
                                 <td class="col-md-4 px-md-2" th:text="${comentario.puntuacion}"></td>
                                 <td class="col-md-4 px-md-2" th:text="${comentario.texto}"></td>
                                 
