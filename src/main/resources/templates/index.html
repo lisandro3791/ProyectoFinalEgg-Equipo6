@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en" xmlns:th=" https://www.thymeleaf.org">
+<html lang="en" xmlns:th=" https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- basic -->
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Juegos</title>
+    <title>Inicio</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -50,15 +50,15 @@
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
                     <div class="about_box">
-                        
+
                         <span>Compra los mejores juegos</span>
                         <p>solo a un click de distancia </p>
 
                     </div>
-               
+
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- end about -->
 
@@ -73,44 +73,44 @@
                 </div>
             </div>
         </div>
-        
 
-    <!-- end brand -->
-    <div>
-        <div class="container" id="ff-compose"></div>
-        <script async defer src="https://formfacade.com/include/109577284934479598616/form/1FAIpQLScPreOqNqCVXvc-nefSQVs-jImSDYR2my4Yy_Fu3RpTCDcFlg/bootstrap.js?div=ff-compose"></script>
-    </div>
-    <!-- footer -->
-    <footer th:replace="fragments :: footer"></footer>
-    <!-- end footer -->
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".fancybox").fancybox({
-                openEffect: "none",
-                closeEffect: "none"
+
+        <!-- end brand -->
+        <div>
+            <div class="container" id="ff-compose"></div>
+            <script async defer src="https://formfacade.com/include/109577284934479598616/form/1FAIpQLScPreOqNqCVXvc-nefSQVs-jImSDYR2my4Yy_Fu3RpTCDcFlg/bootstrap.js?div=ff-compose"></script>
+        </div>
+        <!-- footer -->
+        <footer th:replace="fragments :: footer"></footer>
+        <!-- end footer -->
+        <!-- Javascript files-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- javascript -->
+        <script src="js/owl.carousel.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".fancybox").fancybox({
+                    openEffect: "none",
+                    closeEffect: "none"
+                });
+
+                $(".zoom").hover(function() {
+
+                    $(this).addClass('transition');
+                }, function() {
+
+                    $(this).removeClass('transition');
+                });
             });
-
-            $(".zoom").hover(function() {
-
-                $(this).addClass('transition');
-            }, function() {
-
-                $(this).removeClass('transition');
-            });
-        });
-    </script>
+        </script>
 </body>
 
 </html>

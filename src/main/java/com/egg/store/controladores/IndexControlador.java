@@ -16,4 +16,9 @@ public class IndexControlador {
         return new ModelAndView("index");
     }
     
+    @GetMapping("/error-403")
+    public ModelAndView error(){
+        return new ModelAndView("error-403");
+    }
+    
 }

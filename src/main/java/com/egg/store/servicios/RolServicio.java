@@ -2,6 +2,7 @@ package com.egg.store.servicios;
 
 import com.egg.store.entidades.Rol;
 import com.egg.store.repositorios.RolRepositorio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,5 +18,10 @@ public class RolServicio {
         Rol rol=new Rol();
         rol.setNombre(nombre);
         rolRepositorio.save(rol);
+    }
+    
+    @Transactional
+    public List<Rol> buscarTodos(){
+        return rolRepositorio.findAll();
     }
 }
