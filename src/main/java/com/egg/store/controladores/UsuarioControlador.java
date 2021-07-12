@@ -60,6 +60,12 @@ public class UsuarioControlador {
     }
     
     
+    @GetMapping("/mi-perfil")
+    public ModelAndView verPerfil(){
+        return new ModelAndView("perfil");
+    }
+    
+    
     
 }
 
