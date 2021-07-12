@@ -1,8 +1,3 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.egg.store.servicios;
 
 import com.egg.store.entidades.Usuario;
@@ -25,10 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-/**
- *
- * @author Mecha
- */
+
 @Service
 public class UsuarioServicio implements UserDetailsService{
     
