@@ -194,8 +194,7 @@
                             <input type="text" class="form-control" placeholder="Ingrese su opinión"  name="texto">
                         </div>
                         <div class="form-group">
-                            <label>usuarioId</label>
-                            <input type="number" class="form-control" placeholder="Ingrese id Usuario"  name="usuarioId">
+                            <input type="hidden" name="usuarioId" th:value="${session.usuarioId}">
                         </div>
                         <div class="form-group">                            
                             <input type="hidden" name="juegoId" th:value=${juego.id}>

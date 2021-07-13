@@ -33,7 +33,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
-    
+
     @Autowired
     private JuegoRepositorio juegoRepositorio;
 
@@ -65,7 +65,7 @@ public class UsuarioServicio implements UserDetailsService {
     // agregar saldo 
     @Transactional
     public void CargarSaldo(Long id, BigDecimal saldo) {
-        Usuario usuario = usuarioRepositorio.buscarPorId(id);        
+        Usuario usuario = usuarioRepositorio.buscarPorId(id);
         usuario.setSaldo(usuario.getSaldo().add(saldo));
     }
 
@@ -73,11 +73,11 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public void CargarJuego(Long idUsuario, String idJuego) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUsuario);
-        Juego juego = juegoRepositorio.getById(idJuego);               
+        Juego juego = juegoRepositorio.getById(idJuego);
         List<Juego> juegos = usuario.getJuegoU();
-        usuario.setSaldo(usuario.getSaldo().subtract(juego.getPrecio())  );
+        usuario.setSaldo(usuario.getSaldo().subtract(juego.getPrecio()));
         juegos.add(juego);
-        usuario.setJuegoU(juegos);        
+        usuario.setJuegoU(juegos);
     }
 
     @Transactional(readOnly = true)
@@ -92,9 +92,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Usuario usuario = usuarioRepositorio.buscarPorMail(username);
         if (usuario == null) {
             throw new UsernameNotFoundException("no se encontro ningun usuario con username" + username);
+
         }
 
         GrantedAuthority rol = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre());
@@ -107,8 +109,11 @@ public class UsuarioServicio implements UserDetailsService {
         session.setAttribute("nombre", usuario.getNombre());
         session.setAttribute("apellido", usuario.getApellido());
         session.setAttribute("nacimiento", usuario.getNacimiento());
+        session.setAttribute("rolNombre", usuario.getRol().getNombre());
+        session.setAttribute("usuarioId", usuario.getId());
 
         return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));
+
     }
 
 }
