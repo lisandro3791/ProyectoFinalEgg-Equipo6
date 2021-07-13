@@ -111,6 +111,8 @@ public class UsuarioServicio implements UserDetailsService {
         session.setAttribute("nacimiento", usuario.getNacimiento());
         session.setAttribute("rolNombre", usuario.getRol().getNombre());
         session.setAttribute("usuarioId", usuario.getId());
+        session.setAttribute("usuario", usuario);
+        
 
         return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));
 

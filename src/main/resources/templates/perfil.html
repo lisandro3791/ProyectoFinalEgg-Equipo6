@@ -48,7 +48,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="letras">
-                      <h4>Antonino Estevez</h4>
+                      <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
                       <button class="botonroj"><a href="saldo.html"> + Saldo </a></button>
                       <button class="botonrojj"><a href="biblioteca.html"> Mi Biblioteca</a></button>
                     </div>
@@ -75,8 +75,8 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Nombre</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      Antonino Estevez
+                    <div class="col-sm-9 text-secondary" th:text="${session.nombre} + ' ' + ${session.apellido}">
+                      
                     </div>
                   </div>
                   <hr>
@@ -84,7 +84,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 text-secondary" th:text="${session.mail}">
                       ninoestevez@gmail.com
                     </div>
                   </div>
@@ -93,8 +93,8 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Fecha de nacimiento</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      17/04/1999
+                    <div class="col-sm-9 text-secondary" th:text="${session.nacimiento}">
+                      
                     </div>
                   </div>
                   <hr>
@@ -102,8 +102,8 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">ID</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      55689
+                    <div class="col-sm-9 text-secondary" th:text="${session.usuarioId}">
+                      
                     </div>
                   </div>
                   <hr>
@@ -111,8 +111,11 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Saldo</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                     ► 489,55
+                    <div class="col-sm-9 text-secondary" th:if='${session.usuario.saldo}' th:text="${session.usuario.saldo}">
+                     
+                    </div>
+                      <div class="col-sm-9 text-secondary" th:if='${session.usuario.saldo == null}' th:text="0">
+                     
                     </div>
                   </div>
                   <hr>
