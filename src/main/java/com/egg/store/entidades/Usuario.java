@@ -1,12 +1,15 @@
 package com.egg.store.entidades;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,26 +18,28 @@ public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    private Long id;    
     private String nombre;
     private String apellido;
     private String contrasena;
     @Column( unique = true)
     private String mail;
+    private long dni;  
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-    private long dni;
     
-
+    
+    private BigDecimal saldo ;
+    @OneToMany    
+    private List <Juego> juegoU;
+        
     
     @ManyToOne
     private Rol rol;
     
 
 
-    public Usuario() {
-    }
+  
 
     public Long getId() {
         return id ;
@@ -101,7 +106,24 @@ public class Usuario implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
+
+    public List <Juego> getJuegoU() {
+        return juegoU;
+    }
+
+    public void setJuegoU(List <Juego> juegoU) {
+        this.juegoU = juegoU;
+    }
+
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
+    }
+
+ 
    
     
     
