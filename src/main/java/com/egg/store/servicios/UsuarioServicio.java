@@ -1,8 +1,11 @@
 package com.egg.store.servicios;
 
+import com.egg.store.entidades.Juego;
 import com.egg.store.entidades.Usuario;
+import com.egg.store.repositorios.JuegoRepositorio;
 import com.egg.store.repositorios.RolRepositorio;
 import com.egg.store.repositorios.UsuarioRepositorio;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -20,79 +23,92 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-
 @Service
-public class UsuarioServicio implements UserDetailsService{
-    
+public class UsuarioServicio implements UserDetailsService {
+
     @Autowired
-       private UsuarioRepositorio usuarioRepositorio;
+    private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private RolRepositorio rolRepositorio;
-    
+
     @Autowired
     private BCryptPasswordEncoder encoder;
- 
-     @ Transactional
+    
+    @Autowired
+    private JuegoRepositorio juegoRepositorio;
+
+    @Transactional
     //Recibe tambien el parametro username, hace falta agregarlo String username
-    public void crear(String nombre, String apellido ,String contrasena,String mail,  Date nacimiento, long dni,String rolId){
-        
-        Usuario usuario = new Usuario ();
+    public void crear(String nombre, String apellido, String contrasena, String mail, Date nacimiento, long dni, String rolId) {
+
+        Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
-     //   usuario.serUsername(username);
+        //   usuario.serUsername(username);
         usuario.setContrasena(encoder.encode(contrasena));
         usuario.setMail(mail);
         usuario.setNacimiento(nacimiento);
         usuario.setDni(dni);
         usuario.setRol(rolRepositorio.getOne(rolId));
-        
+
         usuarioRepositorio.save(usuario);
-                       
+
     }
-    
-     @ Transactional
-    public List <Usuario> buscarTodos() {
-             List<Usuario> usuarios = usuarioRepositorio.findAll();
+
+    @Transactional
+    public List<Usuario> buscarTodos() {
+        List<Usuario> usuarios = usuarioRepositorio.findAll();
         return usuarios;
 
     }
-    
 
-        @Transactional(readOnly =true)
-        public List<Usuario> buscarPorNombre (String nombre){
-            return usuarioRepositorio.buscarPorNombre(nombre);
-        }
-        
+    // agregar saldo 
+    @Transactional
+    public void CargarSaldo(Long id, BigDecimal saldo) {
+        Usuario usuario = usuarioRepositorio.buscarPorId(id);        
+        usuario.setSaldo(usuario.getSaldo().add(saldo));
+    }
+
+    //agregar juego
+    @Transactional
+    public void CargarJuego(Long idUsuario, String idJuego) {
+        Usuario usuario = usuarioRepositorio.buscarPorId(idUsuario);
+        Juego juego = juegoRepositorio.getById(idJuego);               
+        List<Juego> juegos = usuario.getJuegoU();
+        usuario.setSaldo(usuario.getSaldo().subtract(juego.getPrecio())  );
+        juegos.add(juego);
+        usuario.setJuegoU(juegos);        
+    }
+
     @Transactional(readOnly = true)
-    public Usuario buscarPorId(Long id){
-        return  usuarioRepositorio.buscarPorId(id);
+    public List<Usuario> buscarPorNombre(String nombre) {
+        return usuarioRepositorio.buscarPorNombre(nombre);
+    }
+
+    @Transactional(readOnly = true)
+    public Usuario buscarPorId(Long id) {
+        return usuarioRepositorio.buscarPorId(id);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            Usuario usuario = usuarioRepositorio.buscarPorMail(username);
-            if (usuario == null){
-               throw new UsernameNotFoundException ("no se encontro ningun usuario con username" + username);
-            }
-            
-            GrantedAuthority rol=new SimpleGrantedAuthority("ROLE_"+ usuario.getRol().getNombre());
-            
-            ServletRequestAttributes attributes=(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            HttpSession session= attributes.getRequest().getSession(true);
-
-            session.setAttribute("mail", usuario.getMail());
-            session.setAttribute("rol", rol);
-            session.setAttribute("nombre", usuario.getNombre());
-            session.setAttribute("apellido", usuario.getApellido());
-            session.setAttribute("nacimiento", usuario.getNacimiento());
-            
-            
-        return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));
+        Usuario usuario = usuarioRepositorio.buscarPorMail(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("no se encontro ningun usuario con username" + username);
         }
 
-        
+        GrantedAuthority rol = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre());
+
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attributes.getRequest().getSession(true);
+
+        session.setAttribute("mail", usuario.getMail());
+        session.setAttribute("rol", rol);
+        session.setAttribute("nombre", usuario.getNombre());
+        session.setAttribute("apellido", usuario.getApellido());
+        session.setAttribute("nacimiento", usuario.getNacimiento());
+
+        return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));
+    }
 
 }
-    
-    
-
