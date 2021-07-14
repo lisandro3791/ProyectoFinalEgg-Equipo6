@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=" https://www.thymeleaf.org">
+<html lang="en" xmlns:th=" https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head>
         <!-- basic -->
@@ -66,7 +66,7 @@
                             </a>
                             <h3>$<strong class="red" th:text="${juego.precio}"></strong></h3>
                             <span th:text="${juego.nombre}"></span>
-                            <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post">
+                            <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post" sec:authorize="hasRole('ADMIN')">
                                 <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                             </form>
                         </div>

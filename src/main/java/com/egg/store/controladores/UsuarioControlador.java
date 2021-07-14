@@ -3,6 +3,7 @@ package com.egg.store.controladores;
 import com.egg.store.entidades.Usuario;
 import com.egg.store.servicios.RolServicio;
 import com.egg.store.servicios.UsuarioServicio;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,10 @@ public class UsuarioControlador {
         return mav;
 
     }
-    
+
     @GetMapping("/buscar/{nombre}")
-    public ModelAndView mostrarPorNombre(@PathVariable String nombre){
-        ModelAndView mav = new ModelAndView ( "Usuarios");
+    public ModelAndView mostrarPorNombre(@PathVariable String nombre) {
+        ModelAndView mav = new ModelAndView("Usuarios");
         mav.addObject("usuarios", usuarioServicio.buscarPorNombre(nombre));
         return mav;
     }
@@ -54,18 +55,28 @@ public class UsuarioControlador {
     public RedirectView guardar(
             @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String contrasena, @RequestParam long dni,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento, @RequestParam String mail, @RequestParam("rol")String rolId) {
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento, @RequestParam String mail, @RequestParam("rol") String rolId) {
         usuarioServicio.crear(nombre, apellido, contrasena, mail, nacimiento, dni, rolId);
         return new RedirectView("/usuario/ver-todos");
     }
-    
-    
+
     @GetMapping("/mi-perfil")
-    public ModelAndView verPerfil(){
+    public ModelAndView verPerfil() {
         return new ModelAndView("perfil");
     }
-    
-    
-    
-}
 
+    @GetMapping("/saldo")
+    public ModelAndView saldo() {
+        return new ModelAndView("saldo");
+
+    }
+
+    @PostMapping("/cargar-saldo/{id}")
+    public RedirectView cargarSaldo(
+            @PathVariable Long id,
+            @RequestParam BigDecimal saldo) {
+        usuarioServicio.CargarSaldo(id, saldo);
+        return new RedirectView("/usuario/mi-perfil");
+    }
+
+}
