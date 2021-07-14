@@ -49,7 +49,7 @@
                     <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="letras">
                       <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
-                      <button class="botonroj"><a href="saldo.html"> + Saldo </a></button>
+                      <button class="botonroj"><a th:href="@{/usuario/saldo}"> + Saldo </a></button>
                       <button class="botonrojj"><a href="biblioteca.html"> Mi Biblioteca</a></button>
                     </div>
                   </div>
