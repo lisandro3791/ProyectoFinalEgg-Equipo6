@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
     private long dni;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-
+    
     private BigDecimal saldo;
     @OneToMany
     private List<Juego> juegoU;

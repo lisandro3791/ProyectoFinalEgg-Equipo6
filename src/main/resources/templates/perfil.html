@@ -48,8 +48,8 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="letras">
-                      <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
-                      <button class="botonroj"><a th:href="@{/usuario/saldo}"> + Saldo </a></button>
+                      <h4 th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h4>
+                      <button class="botonroj"><a th:href="@{/usuario/__${session.usuario.id}__}"> + Saldo </a></button>
                       <button class="botonrojj"><a href="biblioteca.html"> Mi Biblioteca</a></button>
                     </div>
                   </div>
@@ -75,7 +75,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Nombre</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary" th:text="${session.nombre} + ' ' + ${session.apellido}">
+                    <div class="col-sm-9 text-secondary" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}">
                       
                     </div>
                   </div>
@@ -111,7 +111,7 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Saldo</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary" th:if='${session.usuario.saldo}' th:text="${session.usuario.saldo}">
+                    <div class="col-sm-9 text-secondary" th:text="${usuario.saldo}">
                      
                     </div>
                       <div class="col-sm-9 text-secondary" th:if='${session.usuario.saldo == null}' th:text="0">

@@ -44,19 +44,19 @@
             <form th:action="@{/juegos/guardar}" method="post" th:object="${juego}">
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="string" class="form-control" th:field="*{nombre}" aria-describedby="emailHelp" placeholder="Ingrese nombre del juego" name="nombre">
+                    <input type="string" class="form-control" th:field="*{nombre}" aria-describedby="emailHelp" placeholder="Ingrese nombre del juego" name="nombre" required>
                 </div>
                 <div class="form-group">
                     <label>Genero</label>
-                    <input type="string" class="form-control" th:field="*{genero}" aria-describedby="emailHelp" placeholder="Ingrese Genero del juego" name="genero">
+                    <input type="string" class="form-control" th:field="*{genero}" aria-describedby="emailHelp" placeholder="Ingrese Genero del juego" name="genero" required>
                 </div>
                 <div class="form-group">
                     <label>url de Imagen</label>
-                    <input type="string" class="form-control" th:field="*{urlImagen}" aria-describedby="emailHelp" placeholder="url de imagen" name="urlImagen">
+                    <input type="string" class="form-control" th:field="*{urlImagen}" aria-describedby="emailHelp" placeholder="url de imagen" name="urlImagen" required>
                 </div>
                 <div class="form-group">
                     <label>Precio</label>
-                    <input type="number" class="form-control" th:field="*{precio}" aria-describedby="emailHelp" placeholder="Precio" name="precio">
+                    <input type="number" class="form-control" th:field="*{precio}" aria-describedby="emailHelp" placeholder="Precio" name="precio" required>
 
                 <button type="submit" class="btn btn-primary">Cargar Juego</button>
             </form>
