@@ -50,7 +50,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setNacimiento(nacimiento);
         usuario.setDni(dni);
         usuario.setRol(rolRepositorio.getOne(rolId));
-
+        usuario.setSaldo(BigDecimal.ZERO);
         usuarioRepositorio.save(usuario);
 
     }

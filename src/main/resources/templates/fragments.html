@@ -24,7 +24,7 @@
                                 
                                 <li><a th:href="@{/juegos/ver-todo}">Catalogo</a></li>
                                 <li><a th:href="@{/juegos/crear}" th:if="${session.rolNombre == 'ADMIN'}">Cargar Juego</a></li>
-                                <li><a th:href="@{/usuario/mi-perfil}" th:if="${session.mail}" th:text="${session.mail}"></a></li>
+                                <li><a th:href="@{/usuario/mi-perfil/__${session.usuario.id}__}" th:if="${session.mail}" th:text="${session.mail}"></a></li>
                                 <li><a th:href="@{/logout}" th:if="${session.mail}" th:text="Logout"></a></li>
                                 <li><a th:href="@{/login}" th:if="${session.mail == null}" th:text="Login"></a></li>
                                 <li> <a th:href="@{/usuario/crear}" th:if="${session.mail == null}">Registrarse</a> </li>

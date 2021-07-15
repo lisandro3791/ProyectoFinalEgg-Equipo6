@@ -34,7 +34,12 @@ public class UsuarioControlador {
         return mav;
 
     }
-
+     @GetMapping("/{id}")
+    public ModelAndView mostrarPorId(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("saldo");
+        mav.addObject("usuario", usuarioServicio.buscarPorId(id));
+        return mav;
+    }
     @GetMapping("/buscar/{nombre}")
     public ModelAndView mostrarPorNombre(@PathVariable String nombre) {
         ModelAndView mav = new ModelAndView("Usuarios");
@@ -60,23 +65,20 @@ public class UsuarioControlador {
         return new RedirectView("/usuario/ver-todos");
     }
 
-    @GetMapping("/mi-perfil")
-    public ModelAndView verPerfil() {
-        return new ModelAndView("perfil");
+    @GetMapping("/mi-perfil/{id}")
+    public ModelAndView verPerfil(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("perfil");
+        mav.addObject("usuario", usuarioServicio.buscarPorId(id));
+        return mav;
     }
 
-    @GetMapping("/saldo")
-    public ModelAndView saldo() {
-        return new ModelAndView("saldo");
-
-    }
 
     @PostMapping("/cargar-saldo/{id}")
     public RedirectView cargarSaldo(
             @PathVariable Long id,
             @RequestParam BigDecimal saldo) {
         usuarioServicio.CargarSaldo(id, saldo);
-        return new RedirectView("/usuario/mi-perfil");
+        return new RedirectView("/usuario/mi-perfil/{id}");
     }
 
 }
