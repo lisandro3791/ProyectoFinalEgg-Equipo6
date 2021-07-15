@@ -68,7 +68,7 @@ public class UsuarioControlador {
     @GetMapping("/mi-perfil/{id}")
     public ModelAndView verPerfil(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("perfil");
-        mav.addObject("usuario", usuarioServicio.buscarPorId(id));
+        mav.addObject("saldo", usuarioServicio.buscarPorId(id).getSaldo());
         return mav;
     }
 
@@ -79,6 +79,14 @@ public class UsuarioControlador {
             @RequestParam BigDecimal saldo) {
         usuarioServicio.CargarSaldo(id, saldo);
         return new RedirectView("/usuario/mi-perfil/{id}");
+    }
+    @GetMapping("/editar/{id}")
+    public ModelAndView editarPerfeil(@PathVariable Long id){
+       ModelAndView mav=new ModelAndView("editarperfil");
+        mav.addObject("usuario", usuarioServicio.buscarPorId(id));
+        mav.addObject("roles", rolServicio.buscarTodos());
+        
+        return mav;
     }
 
 }
