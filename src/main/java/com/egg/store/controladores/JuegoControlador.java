@@ -4,6 +4,7 @@ import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Juego;
 import com.egg.store.servicios.ComentarioServicio;
 import com.egg.store.servicios.JuegoServicio;
+import com.egg.store.servicios.UsuarioServicio;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class JuegoControlador {
 
     @Autowired
     private JuegoServicio juegoServicio;
-
+    @Autowired
+    private UsuarioServicio usuarioServicio;
     @Autowired
     private ComentarioServicio comentarioServicio;
 
@@ -58,7 +60,7 @@ public class JuegoControlador {
         return mav;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/{idUsuario}")
     public ModelAndView verJuego(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("juegoindividual");
         mav.addObject("juego", juegoServicio.buscarPorId(id));
@@ -90,5 +92,6 @@ public class JuegoControlador {
 
         return mav;
     }
+ 
 
 }

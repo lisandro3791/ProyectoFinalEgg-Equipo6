@@ -104,12 +104,16 @@ public class UsuarioControlador {
         mav.addObject("juegos", usuarioServicio.juegos(id));
         return mav;
     }
+
+    @PostMapping("/comprar/{id}/{idUser}")
+    public RedirectView comparar(@PathVariable String id, @PathVariable Long idUser) {
+        usuarioServicio.comprarJuego(idUser, id);
+        return new RedirectView("/juegos/ver-todo");
+    }
     
-//    @PostMapping("/comprar")
-//    public RedirectView comparar(@RequestParam("idJuego") String idJuego,@RequestParam("idUser")String idUser1){
-//        Long idUser= new Long(idUser1) ;
-//        usuarioServicio.comprarJuego(idUser, idJuego);
-//        return new RedirectView("/mis-juegos/{"+idUser+"}");
-//    }
-    
+    @PostMapping("/eliminar/{id}/{idUser}")
+    public RedirectView eliminarDeBiblioteca(@PathVariable String id,@PathVariable Long idUser){
+        usuarioServicio.EliminarDeBi(id, idUser);
+        return new RedirectView("/");
+    }
 }

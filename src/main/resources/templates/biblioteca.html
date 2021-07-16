@@ -72,20 +72,22 @@
 
 
             </div>
-            <div th:unless="${juegos}" class="row gutters-sm">
+            <div th:unless="${juegos.isEmpty()}" class="row gutters-sm">
                 <div th:each=" juego : ${juegos}" class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <a th:href="@{juegos/__${juego.id}__}"> <img src="C:\Users\ninoe\Desktop\imagen cod.png" alt="Imagen juego" width="350" class="imagenjuegos"></a>
+                                <a th:href="@{/juegos/__${juego.id}__/__${session.usuarioId}__}"> <img th:src="${juego.urlImagen}" alt="Imagen juego" width="350" class="imagenjuegos"></a>
                                 <div class="letras">
                                     <hr>
                                     <h3 class="titulojuegos" th:text="${juego.nombre}"></h3>
                                     <button class="botonroj"> Descargar </button>
-                                    <form th:action="@{/usuario/eliminar}" method="post">
-                                        <input type="hidden" name="idUser" th:value="session.usuarioId">
-                                        <input type="hidden" name="idJuego" th:value="${juego.id}">
-                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar de tu biblioteca</button>
+                                    <br>
+                                    <br>
+                                    <form th:action="@{/usuario/eliminar/__${juego.id}__/__${session.usuarioId}__}" method="post">
+                                        <input type="hidden" name="idUser" th:value=${session.usuarioId}>
+                                        <input type="hidden" name="idJuego" th:value=${juego.id}>
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar de tu Biblioteca</button>
                                     </form>
                                 </div>
                             </div>

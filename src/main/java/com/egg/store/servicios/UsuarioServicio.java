@@ -91,26 +91,36 @@ public class UsuarioServicio implements UserDetailsService {
     public Usuario buscarPorId(Long id) {
         return usuarioRepositorio.buscarPorId(id);
     }
+
     @Transactional
-    public void modificar( Long id,String newNombre, String newApellido,String newMail, Date newNacimiento){
+    public void modificar(Long id, String newNombre, String newApellido, String newMail, Date newNacimiento) {
         usuarioRepositorio.modificar(id, newNombre, newApellido, newMail, newNacimiento);
     }
+
     @Transactional(readOnly = true)
-    public List<Juego> juegos(Long id){
-        Usuario usuario= usuarioRepositorio.getById(id);
+    public List<Juego> juegos(Long id) {
+        Usuario usuario = usuarioRepositorio.getById(id);
         return usuario.getJuegoU();
     }
-    
-//    @Transactional
-//    public void comprarJuego(Long idUser, String idJuego){
-//        Usuario usuario= usuarioRepositorio.buscarPorId(idUser);
-//        List<Juego> juegos=usuario.getJuegoU();
-//        juegos.addAll(juegos);
-//        
-//        usuarioRepositorio.comprar(idUser,juegos);
-//    }
-    
-    
+
+    @Transactional
+    public void comprarJuego(Long idUser, String idJuego) {
+        Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
+        Juego juegos = juegoRepositorio.getById(idJuego);
+        usuario.getJuegoU().add(juegos);
+
+    }
+
+    @Transactional
+    public void EliminarDeBi(String idJuego, Long idUser) {
+        Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
+        Juego juegos = juegoRepositorio.getById(idJuego);
+        int jue = usuario.getJuegoU().indexOf(juegos);
+        if (usuario.getJuegoU().indexOf(juegos)+1 >= 0) {
+            usuario.getJuegoU().remove(jue+1);
+        }
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -132,8 +142,6 @@ public class UsuarioServicio implements UserDetailsService {
         session.setAttribute("nacimiento", usuario.getNacimiento());
         session.setAttribute("rolNombre", usuario.getRol().getNombre());
         session.setAttribute("usuarioId", usuario.getId());
-        
-        
 
         return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));
 
