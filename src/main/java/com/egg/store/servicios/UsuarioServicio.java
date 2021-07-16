@@ -89,6 +89,10 @@ public class UsuarioServicio implements UserDetailsService {
     public Usuario buscarPorId(Long id) {
         return usuarioRepositorio.buscarPorId(id);
     }
+    @Transactional
+    public void modificar( Long id,String newNombre, String newApellido,String newMail, Date newNacimiento){
+        usuarioRepositorio.modificar(id, newNombre, newApellido, newMail, newNacimiento);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -111,7 +115,7 @@ public class UsuarioServicio implements UserDetailsService {
         session.setAttribute("nacimiento", usuario.getNacimiento());
         session.setAttribute("rolNombre", usuario.getRol().getNombre());
         session.setAttribute("usuarioId", usuario.getId());
-        session.setAttribute("usuario", usuario);
+        
         
 
         return new User(usuario.getMail(), usuario.getContrasena(), Collections.singletonList(rol));

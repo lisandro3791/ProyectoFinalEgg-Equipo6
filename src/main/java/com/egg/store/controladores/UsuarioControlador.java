@@ -68,7 +68,7 @@ public class UsuarioControlador {
     @GetMapping("/mi-perfil/{id}")
     public ModelAndView verPerfil(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("perfil");
-        mav.addObject("saldo", usuarioServicio.buscarPorId(id).getSaldo());
+        mav.addObject("usuario", usuarioServicio.buscarPorId(id));
         return mav;
     }
 
@@ -88,5 +88,18 @@ public class UsuarioControlador {
         
         return mav;
     }
+    
+    @PostMapping("/modificar")
+    public RedirectView modificar(@RequestParam("id")Long id,@RequestParam("nombre") String newNombre,@RequestParam("apellido")String newApellido,@RequestParam("mail")String newMail,@RequestParam("nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date newNaciemiento){
+        usuarioServicio.modificar(id, newNombre, newApellido, newMail, newNaciemiento);
+        return new RedirectView("/");
+    }
+    
+    
+    /*@GetMapping("/mis-juegos/{id}")
+    public ModelAndView biblioteca(@PathVariable Long id){
+        ModelAndView mav=new ModelAndView("biblioteca");
+        mav.addObject("", this)
+    }*/
 
 }

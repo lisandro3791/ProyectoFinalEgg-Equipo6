@@ -24,15 +24,12 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
     <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" type="text/css"
-        href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
-    <link rel="stylesheet" type="text/css"
-        th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}" />
-    <link rel="stylesheet" type="text/css"
-        th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
 
 </head>
 <header>
@@ -53,7 +50,9 @@
 
             <!-- Breadcrumb -->
 
-            <div></br></div>
+            <div>
+                </br>
+            </div>
             <!-- /Breadcrumb -->
 
             <div class="row gutters-sm">
@@ -61,16 +60,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle"
-                                    width="150">
+                                <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="letras">
 
                                     <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
                                     <hr>
                                     <h5>Saldo disponible:</h5>
-                                    
-                                        <h5 th:text="${usuario.saldo}"></h5>
-                                
+
+                                    <h5 th:text="${usuario.saldo}"></h5>
+
                                 </div>
                             </div>
                         </div>
@@ -85,7 +83,7 @@
                                 <h1 class="titulosaldo">Ingrese la cantidad a cargar:</h1>
                             </div>
                             <hr>
-                            <form th:action="@{/usuario/cargar-saldo/__${session.usuario.id}__}" method="POST">
+                            <form th:action="@{/usuario/cargar-saldo/__${session.usuarioId}__}" method="POST">
                                 <div>
                                     <div class="titulosaldo">
                                         <label for="inp" class="signodinero">$</label>
@@ -109,14 +107,14 @@
                                         </div>
                                     </div>
                             </form>
+                            </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <style type="text/css">
@@ -126,15 +124,15 @@
             text-align: left;
             background-color: rgb(214, 214, 214);
         }
-
+        
         .main-body {
             padding: 15px;
         }
-
+        
         .card {
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
         }
-
+        
         .card {
             position: relative;
             display: flex;
@@ -145,43 +143,42 @@
             border: 0 solid rgba(0, 0, 0, .125);
             border-radius: .25rem;
         }
-
+        
         .card-body {
             flex: 1 1 auto;
             min-height: 1px;
             padding: 1rem;
         }
-
+        
         .gutters-sm {
             margin-right: -8px;
             margin-left: -8px;
         }
-
+        
         .gutters-sm>.col,
         .gutters-sm>[class*=col-] {
             padding-right: 8px;
             padding-left: 8px;
         }
-
+        
         .mb-3,
         .my-3 {
             margin-bottom: 1rem !important;
         }
-
+        
         .bg-gray-300 {
             background-color: #e2e8f0;
         }
-
+        
         .h-100 {
             height: 100% !important;
         }
-
+        
         .shadow-none {
             box-shadow: none !important;
         }
-
+        
         .cajon {
-
             background-color: black;
             margin: 1px;
             padding: 10px;
@@ -191,27 +188,23 @@
             border-top: 0px;
             border-radius: 3px;
         }
-
+        
         .letras {
             color: cornsilk;
             margin-top: 0 !important;
-
         }
-
+        
         .letrasscundarias {
             color: cornsilk;
             margin-bottom: -1px;
             margin-top: -4px;
         }
-
+        
         a {
-
             text-decoration: none;
             color: rgb(0, 0, 0);
-
-
         }
-
+        
         .botonroj {
             background-color: rgb(168, 0, 0);
             color: white;
@@ -221,13 +214,9 @@
             border-radius: 3px;
             border-color: rgb(63, 7, 10);
             padding: 8px;
-
-
-
         }
-
+        
         .botonroj:hover {
-
             background-color: rgb(243, 125, 125);
             color: rgb(255, 255, 255);
             height: 40px;
@@ -236,13 +225,8 @@
             border-radius: 3px;
             border-color: rgb(63, 7, 10);
             padding: 8px;
-
-
-
         }
-
-
-
+        
         .botonrojj {
             background-color: rgb(255, 255, 255);
             color: rgb(134, 8, 8);
@@ -252,16 +236,13 @@
             border-radius: 3px;
             border-color: rgb(63, 7, 10);
             padding: 8px;
-
         }
-
+        
         .botonrojj:hover {
             background-color: rgb(145, 11, 11);
             color: rgb(221, 204, 204);
-
-
         }
-
+        
         .botonver {
             background-color: rgb(4, 170, 40);
             color: rgb(255, 255, 255);
@@ -271,37 +252,26 @@
             border-radius: 3px;
             border-color: rgba(83, 83, 83, 0.61);
             padding: 8px;
-
         }
-
+        
         .botonver:hover {
             background-color: rgb(12, 204, 76);
             color: rgb(221, 204, 204);
-
-
         }
-
+        
         .colorbarra {
-
             background-color: darkred !important;
-
         }
-
+        
         .titulosaldo {
-
             text-align: center;
-
         }
-
+        
         .titulosaldo1 {
-
-
             display: inline;
-
         }
-
+        
         .ventana {
-
             background-color: #aaaaaae7;
             border-radius: 10px;
             color: black;
@@ -317,13 +287,9 @@
             top: 10%;
             z-index: 100;
             display: none;
-
-
         }
-
+        
         .input1 {
-
-
             position: relative;
             height: 131px;
             border-style: none;
@@ -331,20 +297,14 @@
             text-decoration: none;
             border-bottom: solid 2px rgb(204, 0, 0);
             text-align: center;
-
-
-
         }
-
+        
         .signodinero {
-
             font-size: 50px;
             color: black;
-
         }
-
+        
         .fieldd {
-
             background-color: #ffffff;
             border-radius: 10px;
             font-family: Arial, Helvetica, sans-serif;
@@ -353,12 +313,10 @@
     </style>
 
     <script type="text/javascript">
-
         function flop() {
 
             document.getElementById("vent").style.display = "block";
         }
-
     </script>
 </body>
 

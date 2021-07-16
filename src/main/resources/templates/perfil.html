@@ -50,11 +50,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
+                                <img src="C:\Users\ninoe\Desktop\profile.png" alt="Foto usuario" class="rounded-circle" width="150">
                                 <div class="letras">
-                                    <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
-                                    <button class="botonroj"><a th:href="@{/usuario/__${session.usuario.id}__}"> + Saldo </a></button>
-                                    <button class="botonrojj"><a href="biblioteca.html"> Mi Biblioteca</a></button>
+                                    <h4 th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h4>
+                                    <button class="botonroj"><a th:href="@{/usuario/__${session.usuarioId}__}"> + Saldo </a></button>
+                                    <button class="botonrojj"><a th:href="@{/usuario/mis-juegos}"> Mi Biblioteca</a></button>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Nombre</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:text="${session.nombre} + ' ' + ${session.apellido}">
+                                <div class="col-sm-9 text-secondary" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}">
 
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Email</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:text="${session.mail}">
+                                <div class="col-sm-9 text-secondary" th:text="${usuario.mail}">
 
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Fecha de nacimiento</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:text="${session.nacimiento}">
+                                <div class="col-sm-9 text-secondary" th:text="${usuario.nacimiento}">
 
                                 </div>
                             </div>
@@ -115,17 +115,17 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Saldo</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:text="${saldo}">
+                                <div class="col-sm-9 text-secondary" th:text="${usuario.saldo}">
 
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:if='${session.usuario.saldo == null}' th:text="0">
+                                <div class="col-sm-9 text-secondary" th:if='${saldo == null}' th:text="0">
 
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="botonroj" th:href="@{/usuario/editar/__${session.usuario.id}__}">Editar perfil</a>
+                                    <a class="botonroj" th:href="@{/usuario/editar/__${session.usuarioId}__}">Editar perfil</a>
                                 </div>
                             </div>
                         </div>
@@ -134,6 +134,12 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <footer th:replace="fragments :: footer"></footer>
 
     <style type="text/css">
         body {
