@@ -92,12 +92,6 @@ public class JuegoControlador {
 
         return mav;
     }
- ///   @PostMapping("/comprar/{id}")
- ///    public RedirectView comparar(@PathVariable("idJuego") String idJuego,@PathVariable("idUser")String idUser1){
-  ///   
- ///   Long idUser= new Long(idUser1) ;
- ///  usuarioServicio.comprarJuego(idUser, idJuego);
- ///  return new RedirectView("/usuario/mi-perfil/{id}");
- /// }
+ 
 
 }

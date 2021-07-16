@@ -1,113 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th=" https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <!-- basic -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- mobile metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-        <!-- site metas -->
-        <title>Catalogo</title>
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- bootstrap css -->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
-        <!-- style css -->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-        <!-- Responsive-->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
-        <!-- fevicon -->
-        <link rel="icon" href="images/fevicon.png" type="image/gif" />
-        <!-- Scrollbar Custom CSS -->
-        <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
-        <!-- Tweaks for older IEs-->
-        <link rel="stylesheet" type="text/css"
-              href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-        <!-- owl stylesheets -->
-        <link rel="stylesheet" type="text/css"
-              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}" />
-        <link rel="stylesheet" type="text/css"
-              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Catalogo</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <!-- Responsive-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{css/jquery.mCustomScrollbar.min.css}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css}" media="screen" />
 
-    </head>
-    <!-- body -->
+</head>
+<!-- body -->
 
-    <body class="main-layout ">
-        <!-- header -->
-        <header>
-            <!-- header inner -->
-            <div class="header" th:replace="fragments :: header"></div>
-            <!-- end header inner -->
-        </header>
+<body class="main-layout ">
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header" th:replace="fragments :: header"></div>
+        <!-- end header inner -->
+    </header>
 
-        <div class="flexsearch">
-            <div class="flexsearch--wrapper">
-                <form class="flexsearch--form" th:action="@{/juegos/ver}" method="get">
-                    <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="text" name="nombre" id="nombre"  placeholder="Buscar por nombre">
-                    </div>
-                    <input class="flexsearch--submit" type="submit" value="&#10140;"/>
-                </form>
-            </div>
+    <div class="flexsearch">
+        <div class="flexsearch--wrapper">
+            <form class="flexsearch--form" th:action="@{/juegos/ver}" method="get">
+                <div class="flexsearch--input-wrapper">
+                    <input class="flexsearch--input" type="text" name="nombre" id="nombre" placeholder="Buscar por nombre">
+                </div>
+                <input class="flexsearch--submit" type="submit" value="&#10140;" />
+            </form>
         </div>
-        <!-- end header -->
-        <div class="brand-bg">
-            <div class="container">
-                <div class="row">
-                    <div th:each="juego : ${juegos}" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                        <div class="brand_box" >
-                            <a th:href="@{/juegos/__${juego.id}__/__${session.usuarioId}__}">
-                                <img th:src="${juego.urlImagen}"   alt="img" />
-                            </a>
-                            <h3>$<strong class="red" th:text="${juego.precio}"></strong></h3>
-                            <span th:text="${juego.nombre}"></span>
-                            <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post" sec:authorize="hasRole('ADMIN')">
-                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                            </form>
-                        </div>
+    </div>
+    <div class="container" th:if="${juegos.isEmpty}">
+        <br>
+        <h5>No hay juegos disponibles aun</h5>
+        <div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/juegos/crear}">Cargar juegos</a></div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+    <!-- end header -->
+    <div class="brand-bg" th:unless="${juegos.isEmpty()}">
+        <div class="container">
+            <div class="row">
+                <div th:each="juego : ${juegos}" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
+                    <div class="brand_box">
+                        <a th:href="@{/juegos/__${juego.id}__/__${session.usuarioId}__}">
+                            <img th:src="${juego.urlImagen}" alt="img" />
+                        </a>
+                        <h3>$<strong class="red" th:text="${juego.precio}"></strong></h3>
+                        <span th:text="${juego.nombre}"></span>
+                        <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post" sec:authorize="hasRole('ADMIN')">
+                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- end brand -->
+    <!-- end brand -->
 
-        <!-- footer -->
-        <footer th:replace="fragments :: footer"></footer>
-        <!-- end footer -->
-        <!-- Javascript files-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.0.0.min.js"></script>
-        <script src="js/plugin.js"></script>
-        <!-- sidebar -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/custom.js"></script>
-        <!-- javascript -->
-        <script src="js/owl.carousel.js"></script>
-        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(".fancybox").fancybox({
-                    openEffect: "none",
-                    closeEffect: "none"
-                });
-
-                $(".zoom").hover(function () {
-
-                    $(this).addClass('transition');
-                }, function () {
-
-                    $(this).removeClass('transition');
-                });
+    <!-- footer -->
+    <footer th:replace="fragments :: footer"></footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
             });
-        </script>
-    </body>
+
+            $(".zoom").hover(function() {
+
+                $(this).addClass('transition');
+            }, function() {
+
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
+</body>
 
 </html>
