@@ -84,10 +84,10 @@
                                     <button class="botonroj"> Descargar </button>
                                     <br>
                                     <br>
-                                    <form th:action="@{/usuario/eliminar}" method="post">
-                                        <input type="hidden" name="idUser" th:value="session.usuarioId">
-                                        <input type="hidden" name="idJuego" th:value="${juego.id}">
-                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar de tu biblioteca</button>
+                                    <form th:action="@{/usuario/eliminar/__${juego.id}__/__${session.usuarioId}__}" method="post">
+                                        <input type="hidden" name="idUser" th:value=${session.usuarioId}>
+                                        <input type="hidden" name="idJuego" th:value=${juego.id}>
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar de tu Biblioteca</button>
                                     </form>
                                 </div>
                             </div>
