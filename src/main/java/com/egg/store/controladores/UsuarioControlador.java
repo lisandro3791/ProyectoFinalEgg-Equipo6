@@ -114,6 +114,6 @@ public class UsuarioControlador {
     @PostMapping("/eliminar/{id}/{idUser}")
     public RedirectView eliminarDeBiblioteca(@PathVariable String id,@PathVariable Long idUser){
         usuarioServicio.EliminarDeBi(id, idUser);
-        return new RedirectView("/");
+        return new RedirectView("/usuario/mis-juegos/"+idUser);
     }
 }

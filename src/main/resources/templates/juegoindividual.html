@@ -178,7 +178,7 @@
                             </div>
                         </div>
                         <div class="container" sec:authorize="isAuthenticated()">
-                            <form th:action="@{/comentarios/comentar}" method="POST" style="background-color: white;">
+                            <form th:action="@{/comentarios/comentar/__${session.usuarioId}__}" method="post" style="background-color: white;">
                                 <div class="form-group">
                                     <label>Puntaje</label>
                                     <!--                            <input type="number" class="form-control" placeholder="0"  name="puntuacion" >-->
@@ -195,9 +195,7 @@
                                     <label>Texto</label>
                                     <input type="text" class="form-control" placeholder="Ingrese su opinión" name="texto">
                                 </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="usuarioId" th:value="${session.usuarioId}">
-                                </div>
+
                                 <div class="form-group">
                                     <input type="hidden" name="juegoId" th:value=${juego.id}>
                                 </div>

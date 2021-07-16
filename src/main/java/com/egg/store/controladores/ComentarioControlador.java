@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,10 +47,10 @@ public class ComentarioControlador {
     }
     
     
-    @PostMapping("/comentar")
-    public RedirectView comentar(@RequestParam Long usuarioId, @RequestParam String juegoId, @RequestParam String puntuacion, @RequestParam String texto){
+    @PostMapping("/comentar/{usuarioId}")
+    public RedirectView comentar(@PathVariable Long usuarioId, @RequestParam String juegoId, @RequestParam String puntuacion, @RequestParam String texto){
         comentarioServicio.comentar(usuarioId, juegoId, Integer.parseInt(puntuacion), texto);
-        return new RedirectView("/juegos/" + juegoId);
+        return new RedirectView("/juegos/"+juegoId+"/"+usuarioId);
         
     }
 }
