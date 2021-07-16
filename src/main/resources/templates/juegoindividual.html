@@ -165,9 +165,9 @@
                                         <hr>
                                         <div class="row" sec:authorize="isAuthenticated()">
                                             <div sec class="col-sm-12">
-                                                <form th:action="@{/usuario/comprar}" method="post">
-                                                    <input type="hidden" name="idUser" th:value="session.usuarioId">
-                                                    <input type="hidden" name="idJuego" th:value="${juego.id}">
+                                                <form th:action="@{/usuario/comprar/__${juego.id}__/__${session.usuarioId}__}" method="post">
+                                                    <input type="hidden" name="idUser" th:value=${session.usuarioId}>
+                                                    <input type="hidden" name="idJuego" th:value=${juego.id}>
                                                     <button class="botonroj" type="submit">Comprar</button>
                                                 </form>
 

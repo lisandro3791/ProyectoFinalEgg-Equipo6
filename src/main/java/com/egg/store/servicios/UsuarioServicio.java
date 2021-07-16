@@ -101,14 +101,13 @@ public class UsuarioServicio implements UserDetailsService {
         return usuario.getJuegoU();
     }
     
-//    @Transactional
-//    public void comprarJuego(Long idUser, String idJuego){
-//        Usuario usuario= usuarioRepositorio.buscarPorId(idUser);
-//        List<Juego> juegos=usuario.getJuegoU();
-//        juegos.addAll(juegos);
-//        
-//        usuarioRepositorio.comprar(idUser,juegos);
-//    }
+  @Transactional
+  public void comprarJuego(Long idUser, String idJuego){
+      Usuario usuario= usuarioRepositorio.buscarPorId(idUser);
+      Juego juegos = juegoRepositorio.getById(idJuego);
+      usuario.getJuegoU().add(juegos);
+
+  }
     
     
     @Override

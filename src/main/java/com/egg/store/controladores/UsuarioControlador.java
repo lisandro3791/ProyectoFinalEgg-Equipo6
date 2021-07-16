@@ -105,11 +105,10 @@ public class UsuarioControlador {
         return mav;
     }
     
-//    @PostMapping("/comprar")
-//    public RedirectView comparar(@RequestParam("idJuego") String idJuego,@RequestParam("idUser")String idUser1){
-//        Long idUser= new Long(idUser1) ;
-//        usuarioServicio.comprarJuego(idUser, idJuego);
-//        return new RedirectView("/mis-juegos/{"+idUser+"}");
-//    }
+  @PostMapping("/comprar/{id}/{idUser}")
+ public RedirectView comparar(@PathVariable String id,@PathVariable Long idUser){
+   usuarioServicio.comprarJuego(idUser, id);
+   return new RedirectView("/juegos/ver-todo");
+  }
     
 }
