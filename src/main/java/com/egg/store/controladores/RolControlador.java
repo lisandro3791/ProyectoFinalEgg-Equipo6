@@ -17,12 +17,12 @@ public class RolControlador {
     
     @Autowired
     private RolServicio rolServicio;
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crearRol(){
         return new ModelAndView("rol-formulario");
     }
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam String nombre){
         rolServicio.crear(nombre);

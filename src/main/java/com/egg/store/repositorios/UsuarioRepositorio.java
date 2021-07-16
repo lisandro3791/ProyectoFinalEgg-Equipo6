@@ -5,6 +5,7 @@
  */
 package com.egg.store.repositorios;
 
+import com.egg.store.entidades.Juego;
 import com.egg.store.entidades.Usuario;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Repository;
  * @author Mecha
  */
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
 
     
     //Modifica un Usuario en los parametros que se pasan cuando coincide el campo de DNI
@@ -37,8 +38,11 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario,String> {
     
     @Query("SELECT u FROM Usuario u WHERE u.mail = :mail")
     Usuario buscarPorMail ( @Param("mail") String mail);
-
     
+//    @Modifying
+//    @Query ("UPDATE Usuario u SET u.juegoU= :juegoU WHERE u.id = :id")
+//    void comprar(@Param("id") Long id,@Param("juegoU") List<Juego> juegos);
+
     
 }
 

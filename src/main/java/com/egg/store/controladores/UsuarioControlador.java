@@ -1,6 +1,7 @@
 package com.egg.store.controladores;
 
 import com.egg.store.entidades.Usuario;
+import com.egg.store.servicios.JuegoServicio;
 import com.egg.store.servicios.RolServicio;
 import com.egg.store.servicios.UsuarioServicio;
 import java.math.BigDecimal;
@@ -34,12 +35,14 @@ public class UsuarioControlador {
         return mav;
 
     }
-     @GetMapping("/{id}")
+
+    @GetMapping("/{id}")
     public ModelAndView mostrarPorId(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("saldo");
         mav.addObject("usuario", usuarioServicio.buscarPorId(id));
         return mav;
     }
+
     @GetMapping("/buscar/{nombre}")
     public ModelAndView mostrarPorNombre(@PathVariable String nombre) {
         ModelAndView mav = new ModelAndView("Usuarios");
@@ -62,7 +65,7 @@ public class UsuarioControlador {
             @RequestParam String contrasena, @RequestParam long dni,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento, @RequestParam String mail, @RequestParam("rol") String rolId) {
         usuarioServicio.crear(nombre, apellido, contrasena, mail, nacimiento, dni, rolId);
-        return new RedirectView("/usuario/ver-todos");
+        return new RedirectView("/");
     }
 
     @GetMapping("/mi-perfil/{id}")
@@ -72,7 +75,6 @@ public class UsuarioControlador {
         return mav;
     }
 
-
     @PostMapping("/cargar-saldo/{id}")
     public RedirectView cargarSaldo(
             @PathVariable Long id,
@@ -80,26 +82,34 @@ public class UsuarioControlador {
         usuarioServicio.CargarSaldo(id, saldo);
         return new RedirectView("/usuario/mi-perfil/{id}");
     }
+
     @GetMapping("/editar/{id}")
-    public ModelAndView editarPerfeil(@PathVariable Long id){
-       ModelAndView mav=new ModelAndView("editarperfil");
+    public ModelAndView editarPerfeil(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("editarperfil");
         mav.addObject("usuario", usuarioServicio.buscarPorId(id));
         mav.addObject("roles", rolServicio.buscarTodos());
-        
+
         return mav;
     }
-    
+
     @PostMapping("/modificar")
-    public RedirectView modificar(@RequestParam("id")Long id,@RequestParam("nombre") String newNombre,@RequestParam("apellido")String newApellido,@RequestParam("mail")String newMail,@RequestParam("nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date newNaciemiento){
+    public RedirectView modificar(@RequestParam("id") Long id, @RequestParam("nombre") String newNombre, @RequestParam("apellido") String newApellido, @RequestParam("mail") String newMail, @RequestParam("nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date newNaciemiento) {
         usuarioServicio.modificar(id, newNombre, newApellido, newMail, newNaciemiento);
         return new RedirectView("/");
     }
-    
-    
-    /*@GetMapping("/mis-juegos/{id}")
-    public ModelAndView biblioteca(@PathVariable Long id){
-        ModelAndView mav=new ModelAndView("biblioteca");
-        mav.addObject("", this)
-    }*/
 
+    @GetMapping("/mis-juegos/{id}")
+    public ModelAndView biblioteca(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("biblioteca");
+        mav.addObject("juegos", usuarioServicio.juegos(id));
+        return mav;
+    }
+    
+//    @PostMapping("/comprar")
+//    public RedirectView comparar(@RequestParam("idJuego") String idJuego,@RequestParam("idUser")String idUser1){
+//        Long idUser= new Long(idUser1) ;
+//        usuarioServicio.comprarJuego(idUser, idJuego);
+//        return new RedirectView("/mis-juegos/{"+idUser+"}");
+//    }
+    
 }

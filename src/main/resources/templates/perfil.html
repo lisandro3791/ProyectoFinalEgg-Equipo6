@@ -54,7 +54,7 @@
                                 <div class="letras">
                                     <h4 th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h4>
                                     <button class="botonroj"><a th:href="@{/usuario/__${session.usuarioId}__}"> + Saldo </a></button>
-                                    <button class="botonrojj"><a th:href="@{/usuario/mis-juegos}"> Mi Biblioteca</a></button>
+                                    <button class="botonrojj"><a th:href="@{/usuario/mis-juegos/__${session.usuarioId}__}"> Mi Biblioteca</a></button>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ import com.egg.store.repositorios.JuegoRepositorio;
 import com.egg.store.repositorios.RolRepositorio;
 import com.egg.store.repositorios.UsuarioRepositorio;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -51,6 +52,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setDni(dni);
         usuario.setRol(rolRepositorio.getOne(rolId));
         usuario.setSaldo(BigDecimal.ZERO);
+        usuario.setJuegoU(new ArrayList<>());
         usuarioRepositorio.save(usuario);
 
     }
@@ -93,7 +95,22 @@ public class UsuarioServicio implements UserDetailsService {
     public void modificar( Long id,String newNombre, String newApellido,String newMail, Date newNacimiento){
         usuarioRepositorio.modificar(id, newNombre, newApellido, newMail, newNacimiento);
     }
-
+    @Transactional(readOnly = true)
+    public List<Juego> juegos(Long id){
+        Usuario usuario= usuarioRepositorio.getById(id);
+        return usuario.getJuegoU();
+    }
+    
+//    @Transactional
+//    public void comprarJuego(Long idUser, String idJuego){
+//        Usuario usuario= usuarioRepositorio.buscarPorId(idUser);
+//        List<Juego> juegos=usuario.getJuegoU();
+//        juegos.addAll(juegos);
+//        
+//        usuarioRepositorio.comprar(idUser,juegos);
+//    }
+    
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
