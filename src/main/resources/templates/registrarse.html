@@ -67,11 +67,9 @@
                 <label>Fecha de nacimiento</label>
                 <input type="date" th:field="*{nacimiento}" class="form-control" name="nacimiento" required>
             </div>
-            <div class="form-group">
-                <Label>Rol</Label>
-                <select th:field="*{rol}" id="rol" class=" form-control" aria-describedby="Elegir rol" placeholder="Elegir rol">
-                        <option th:each=" rol: ${roles}" th:text="${rol.nombre}" th:value="${rol.id}"></option>
-                    </select>
+            <div >
+                <input type="hidden" value="1" name="rol">
+               
             </div>
 
 
