@@ -107,9 +107,20 @@ public class UsuarioControlador {
 
     @PostMapping("/comprar/{id}/{idUser}")
     public RedirectView comparar(@PathVariable String id, @PathVariable Long idUser) {
-        usuarioServicio.comprarJuego(idUser, id);
-        return new RedirectView("/juegos/ver-todo");
+        boolean compra = usuarioServicio.comprarJuego(idUser, id);
+        if (compra == true) {
+            return new RedirectView("/juegos/ver-todo");
+        }
+        else return new RedirectView("/juegos/saldo-insuficiente");
+        
+        
     }
+    @GetMapping("/saldo-insuficiente")
+    public ModelAndView sinSaldo() {
+        ModelAndView mav = new ModelAndView("saldo-insuficiente");
+        return mav;
+    }
+    
     
     @PostMapping("/eliminar/{id}/{idUser}")
     public RedirectView eliminarDeBiblioteca(@PathVariable String id,@PathVariable Long idUser){

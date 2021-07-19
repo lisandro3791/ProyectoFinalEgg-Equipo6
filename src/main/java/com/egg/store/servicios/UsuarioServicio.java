@@ -104,10 +104,17 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void comprarJuego(Long idUser, String idJuego) {
+    public boolean comprarJuego(Long idUser, String idJuego) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
         Juego juegos = juegoRepositorio.getById(idJuego);
+        if (usuario.getSaldo().compareTo(juegos.getPrecio())== 0 || usuario.getSaldo().compareTo(juegos.getPrecio())== 1 ) {
+            usuario.getJuegoU().add(juegos);
+          BigDecimal saldoNuevo =  usuario.getSaldo().subtract(juegos.getPrecio());
+          usuario.setSaldo(saldoNuevo);
         usuario.getJuegoU().add(juegos);
+        return true;
+        }
+        else return false;
 
     }
 
