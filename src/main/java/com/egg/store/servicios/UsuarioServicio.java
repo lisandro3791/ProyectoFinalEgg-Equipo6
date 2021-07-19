@@ -114,11 +114,16 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public void EliminarDeBi(String idJuego, Long idUser) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
-        Juego juegos = juegoRepositorio.getById(idJuego);
-        int jue = usuario.getJuegoU().indexOf(juegos);
-        if (usuario.getJuegoU().indexOf(juegos)+1 >= 0) {
-            usuario.getJuegoU().remove(jue+1);
+        Juego juego = juegoRepositorio.getById(idJuego);
+        List<Juego> juegos=usuario.getJuegoU();
+        int pos=-1;
+        for (int i = 0; i < juegos.size(); i++) {
+            if (juegos.get(i).getId().equalsIgnoreCase(idJuego)) {
+                pos=i;
+            }
         }
+        juegos.remove(pos);
+        
     }
 
     @Override

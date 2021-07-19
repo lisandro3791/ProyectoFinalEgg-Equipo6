@@ -43,6 +43,7 @@ public class JuegoServicio {
     
     @Transactional
     public void eliminar(String id){
+        comentarioRepositorio.borrarComentario(juegoRepositorio.getById(id));
         juegoRepositorio.deleteById(id);
     }
     
