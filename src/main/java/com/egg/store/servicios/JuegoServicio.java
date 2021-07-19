@@ -28,12 +28,14 @@ public class JuegoServicio {
         juego.setPrecio(precio);
         juego.setPuntaje(0.0);
         juego.setUrlImagen(urlImagen);
+        juego.setMostrar(true);
         juegoRepositorio.save(juego);
     }
     
     @Transactional(readOnly = true)
     public List<Juego> buscarTodos(){
         return juegoRepositorio.findAll();
+        
     }
     
     @Transactional(readOnly = true)
@@ -86,6 +88,12 @@ public class JuegoServicio {
         }else{
             return (suma+0.0)/contador;
         }
+        
+        
+    }
+    @Transactional
+    public void mostar( String id, boolean mostrar){
+        juegoRepositorio.modificarMostrar(id, mostrar);
         
         
     }

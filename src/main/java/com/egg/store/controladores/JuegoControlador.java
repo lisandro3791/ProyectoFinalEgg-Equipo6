@@ -81,7 +81,7 @@ public class JuegoControlador {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar(@PathVariable String id) {
-        juegoServicio.eliminar(id);
+        juegoServicio.mostar(id, false);
         return new RedirectView("/juegos/ver-todo");
     }
 

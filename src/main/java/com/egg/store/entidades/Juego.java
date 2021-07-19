@@ -24,6 +24,7 @@ public class Juego implements Serializable {
     @ManyToMany
     private List<Comentario> comentarios;
     private String urlImagen;
+    private boolean mostrar;
 
     public Juego() {
     }
@@ -83,6 +84,15 @@ public class Juego implements Serializable {
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
     }
+
+    public boolean isMostrar() {
+        return mostrar;
+    }
+
+    public void setMostrar(boolean mostrar) {
+        this.mostrar = mostrar;
+    }
+    
 
     @Override
     public int hashCode() {

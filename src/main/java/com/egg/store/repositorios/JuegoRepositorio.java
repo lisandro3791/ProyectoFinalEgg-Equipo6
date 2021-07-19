@@ -25,7 +25,9 @@ public interface JuegoRepositorio extends JpaRepository <Juego,String>{
     @Query("SELECT j FROM Juego j WHERE j.nombre like :nombre")
     List<Juego> buscarPorNombre(@Param("nombre")String nombre); 
     
-    
+    @Modifying
+    @Query("UPDATE Juego j  SET j.mostrar=:mostrar WHERE j.id=:id")
+    void modificarMostrar(@Param("id") String id,@Param("mostrar") boolean mostrar);
     
     
 }
