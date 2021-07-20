@@ -102,20 +102,21 @@ public class Juego implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Juego obj) {
+        
+        
         if (this == obj) {
             return true;
         }
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Juego other = (Juego) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+        final Juego other =  obj;
+        if (this.id.equals(other.id)) {
+            return true;
         }
         return true;
     }
