@@ -64,8 +64,8 @@
                         <a th:href=@{/juegos/__${juego.id}__}>
                             <img th:src="${juego.urlImagen}"   alt="img" />
                         </a>
-                        <h3>$<strong class="red" th:text="${juego.precio}"></strong></h3>
-                        <span th:text="${juego.nombre}"></span>
+                        <h2 style="font-family: Poppins" th:text="'$ ' + ${juego.precio}"></h2>
+                        <h3 style="font-family: Poppins" th:text="${juego.nombre}"></h3>
                         <form th:action="@{/juegos/eliminar/__${juego.id}__}" method="post">
                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                         </form>
