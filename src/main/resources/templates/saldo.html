@@ -79,15 +79,15 @@
                         <div class="card-body">
                             <div>
 
-                                <h1 class="titulosaldo">Ingrese la cantidad a cargar:</h1>
+                                <h3 class="titulosaldo">Ingrese la cantidad a cargar:</h3>
                             </div>
                             <hr>
                             <form th:action="@{/usuario/cargar-saldo/__${session.usuarioId}__}" method="POST">
                                 <div>
                                     <div class="titulosaldo">
-                                        <label for="inp" class="signodinero">$</label>
+                                        <label for="inp" class="signodinero" style="font-size:20px">$</label>
 
-                                        <input id="inp" type="number" class="input1" contenteditable="" name="saldo">
+                                        <input id="inp" type="number" class="input1" contenteditable="" name="saldo" style="font-size:20px">
                                     </div>
                                 </div>
                                 <hr>
