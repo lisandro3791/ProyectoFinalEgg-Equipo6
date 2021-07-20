@@ -107,12 +107,17 @@ public class UsuarioServicio implements UserDetailsService {
     public boolean comprarJuego(Long idUser, String idJuego) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
         Juego juegos = juegoRepositorio.getById(idJuego);
+        ////verifica si el juego ya esta en la biblioteca personal
+        for (Juego j : usuario.getJuegoU()) {
+            if (j.getId().equals(juegos.getId())) {
+                return false;
+            }
+        }
+        //// verifica si el usuario tiene saldo suficiente
         if (usuario.getSaldo().compareTo(juegos.getPrecio()) == -1) {
             return false;
         }
-        if (usuario.getJuegoU().contains(juegos)) {
-            return false;
-        }
+        
 
         BigDecimal saldoNuevo = usuario.getSaldo().subtract(juegos.getPrecio());
         usuario.setSaldo(saldoNuevo);
