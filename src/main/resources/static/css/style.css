@@ -2169,6 +2169,7 @@ ul.location_icon span {
 	background: transparent;
 	margin: 0;
 	position: static;
+     margin-bottom: 14px;
 }
 	
 .flexsearch--form {
@@ -2190,6 +2191,8 @@ ul.location_icon span {
  ***********************/
 .flexsearch {
   padding: 0 25px 0 200px; /* Padding for other horizontal elements */
+  border-top: solid 1px rgb(107, 105, 105);
+  border-bottom: solid 1px rgb(107, 105, 105);
 }
 
 .flexsearch--input {

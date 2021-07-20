@@ -53,11 +53,14 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             
                             <div>
-                                <h4 class="letras"> SALDO INSUFICIENTE: REALICE UNA RECARGA</h4>
+                                <h4 class="letras">.: ERROR :. </h4>
+                                <br>
+                                <h4 class="letras"> Es posible que tu saldo no sea suficiente o que ya tengas el juego en tu biblioteca.</h4>
                                 <br>
                                 <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/warning-symbol%2C-warning-sign-design-template-5becb2f6646d14a8076b36a92efb1db8_screen.jpg?ts=1609018489" alt="Admin" width="150" height="150">
                                 <hr>
                                 <div class="field">
+                                    <button class="botonrojj"><a th:href="@{/usuario/mis-juegos/__${session.usuarioId}__}"> Revisar Biblioteca</a></button>
                                 <button class="botonroj"><a th:href="@{/usuario/__${session.usuarioId}__}"> Nueva Recarga </a></button>
                                 </div>
                             </div>
@@ -125,6 +128,25 @@
             border-radius: 3px;
             border-color: rgb(63, 7, 10);
             padding: 8px;
+        }
+
+               
+        .botonrojj {
+            background-color: rgb(230, 230, 230);
+            color: rgb(0, 0, 0);
+            height: 80px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-top: 0px;
+            border-left: 0px;
+            border-radius: 3px;
+            border-color: rgb(5, 0, 78);
+            padding: 8px;
+        }
+        
+        .botonrojj:hover {
+            background-color: rgb(116, 172, 255);
+            color: rgb(0, 0, 0);
         }
         
         .letras {
