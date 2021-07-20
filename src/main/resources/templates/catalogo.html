@@ -47,9 +47,9 @@
 
 <div class="flexsearch">
 		<div class="flexsearch--wrapper">
-			<form class="flexsearch--form" action="#" method="post">
+			<form class="flexsearch--form" th:action="@{/juegos/ver}" method="get">
 				<div class="flexsearch--input-wrapper">
-					<input class="flexsearch--input" type="search" placeholder="Buscar por nombre">
+					<input class="flexsearch--input" type="text" name="nombre" id="nombre" placeholder="Buscar por nombre">
 				</div>
 				<input class="flexsearch--submit" type="submit" value="&#10140;"/>
 			</form>
