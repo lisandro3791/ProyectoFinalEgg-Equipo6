@@ -107,14 +107,17 @@ public class UsuarioServicio implements UserDetailsService {
     public boolean comprarJuego(Long idUser, String idJuego) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
         Juego juegos = juegoRepositorio.getById(idJuego);
-        if (usuario.getSaldo().compareTo(juegos.getPrecio())== 0 || usuario.getSaldo().compareTo(juegos.getPrecio())== 1 ) {
-            usuario.getJuegoU().add(juegos);
-          BigDecimal saldoNuevo =  usuario.getSaldo().subtract(juegos.getPrecio());
-          usuario.setSaldo(saldoNuevo);
+        if (usuario.getSaldo().compareTo(juegos.getPrecio()) == -1) {
+            return false;
+        }
+        if (usuario.getJuegoU().contains(juegos)) {
+            return false;
+        }
+
+        BigDecimal saldoNuevo = usuario.getSaldo().subtract(juegos.getPrecio());
+        usuario.setSaldo(saldoNuevo);
         usuario.getJuegoU().add(juegos);
         return true;
-        }
-        else return false;
 
     }
 
@@ -122,15 +125,15 @@ public class UsuarioServicio implements UserDetailsService {
     public void EliminarDeBi(String idJuego, Long idUser) {
         Usuario usuario = usuarioRepositorio.buscarPorId(idUser);
         Juego juego = juegoRepositorio.getById(idJuego);
-        List<Juego> juegos=usuario.getJuegoU();
-        int pos=-1;
+        List<Juego> juegos = usuario.getJuegoU();
+        int pos = -1;
         for (int i = 0; i < juegos.size(); i++) {
             if (juegos.get(i).getId().equalsIgnoreCase(idJuego)) {
-                pos=i;
+                pos = i;
             }
         }
         juegos.remove(pos);
-        
+
     }
 
     @Override

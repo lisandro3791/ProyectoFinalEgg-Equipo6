@@ -77,7 +77,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <a th:href="@{/juegos/__${juego.id}__/__${session.usuarioId}__}"> <img th:src="${juego.urlImagen}" alt="Imagen juego" width="350" class="imagenjuegos"></a>
+                                <a th:href="@{/juegos/__${juego.id}__}"> <img th:src="${juego.urlImagen}" alt="Imagen juego" width="350" class="imagenjuegos"></a>
                                 <div class="letras">
                                     <hr>
                                     <h3 class="titulojuegos" th:text="${juego.nombre}"></h3>

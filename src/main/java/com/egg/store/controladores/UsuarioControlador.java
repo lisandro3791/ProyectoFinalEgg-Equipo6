@@ -109,22 +109,21 @@ public class UsuarioControlador {
     public RedirectView comparar(@PathVariable String id, @PathVariable Long idUser) {
         boolean compra = usuarioServicio.comprarJuego(idUser, id);
         if (compra == true) {
-            return new RedirectView("/juegos/ver-todo");
+            return new RedirectView("/usuario/mis-juegos/"+"{idUser}");
+        } else {
+            return new RedirectView("/usuario/saldo-insuficiente");
         }
-        else return new RedirectView("/juegos/saldo-insuficiente");
-        
-        
+
     }
+
     @GetMapping("/saldo-insuficiente")
     public ModelAndView sinSaldo() {
-        ModelAndView mav = new ModelAndView("saldo-insuficiente");
-        return mav;
+        return new ModelAndView("saldo-insuficiente");
     }
-    
-    
+
     @PostMapping("/eliminar/{id}/{idUser}")
-    public RedirectView eliminarDeBiblioteca(@PathVariable String id,@PathVariable Long idUser){
+    public RedirectView eliminarDeBiblioteca(@PathVariable String id, @PathVariable Long idUser) {
         usuarioServicio.EliminarDeBi(id, idUser);
-        return new RedirectView("/usuario/mis-juegos/"+idUser);
+        return new RedirectView("/usuario/mis-juegos/" + idUser);
     }
 }
