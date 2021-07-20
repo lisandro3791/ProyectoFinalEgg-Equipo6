@@ -60,7 +60,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="C:\Users\ninoe\Desktop\profile.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="letras">
 
                                     <h4 th:text="${session.nombre} + ' ' + ${session.apellido}"></h4>
@@ -116,6 +115,9 @@
             </div>
         </div>
     </div>
+            <!-- footer -->
+            <footer th:replace="fragments :: footer"></footer>
+            <!-- end footer -->
 
     <style type="text/css">
         body {
