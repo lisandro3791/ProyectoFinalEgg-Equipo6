@@ -9,6 +9,7 @@ import com.egg.store.entidades.Comentario;
 import com.egg.store.entidades.Usuario;
 import com.egg.store.entidades.Juego;
 import com.egg.store.servicios.ComentarioServicio;
+import com.egg.store.servicios.UsuarioServicio;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class ComentarioControlador {
     
     @Autowired
     private ComentarioServicio comentarioServicio;
+    
+    @Autowired
+    private UsuarioServicio usuarioServicio;
     
     @GetMapping
     public ModelAndView buscarTodos(){
@@ -49,8 +53,14 @@ public class ComentarioControlador {
     
     @PostMapping("/comentar/{usuarioId}")
     public RedirectView comentar(@PathVariable Long usuarioId, @RequestParam String juegoId, @RequestParam String puntuacion, @RequestParam String texto){
-        comentarioServicio.comentar(usuarioId, juegoId, Integer.parseInt(puntuacion), texto);
-        return new RedirectView("/juegos/"+juegoId);
+        List<Comentario> comentarios = comentarioServicio.buscarPorJuego(juegoId);
+        if(!(comentarios.stream().filter(o -> o.getUsuario().equals(usuarioServicio.buscarPorId(usuarioId))).findFirst().isPresent())){
+           comentarioServicio.comentar(usuarioId, juegoId, Integer.parseInt(puntuacion), texto);
+           return new RedirectView("/juegos/"+juegoId); 
+        }else{
+            return new RedirectView("/juegos/"+juegoId);
+        }
+        
         
     }
 }
