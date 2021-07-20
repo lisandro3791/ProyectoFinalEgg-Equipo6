@@ -114,7 +114,7 @@
                                 <div class="col-sm-9 text-secondary" th:text="${usuario.saldo}">
 
                                 </div>
-                                <div class="col-sm-9 text-secondary" th:if='${saldo == null}' th:text="0">
+                                <div class="col-sm-9 text-secondary" th:if="${usuario.saldo == null}" th:text="0">
 
                                 </div>
                             </div>
