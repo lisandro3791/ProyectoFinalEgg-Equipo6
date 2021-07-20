@@ -60,7 +60,7 @@ public class JuegoControlador {
         return mav;
     }
 
-    @GetMapping("/{id}/{idUsuario}")
+    @GetMapping("/{id}")
     public ModelAndView verJuego(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("juegoindividual");
         mav.addObject("juego", juegoServicio.buscarPorId(id));

@@ -117,51 +117,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-8">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Nombre</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary" th:text=${juego.nombre}>
 
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Genero</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary" th:text=${juego.genero}>
-
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Puntaje promedio</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary" th:text=${promedio}>
-
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">$</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary" th:text=${juego.precio}>
-
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <h6 class="mb-0">Descripcion</h6>
-                                            </div>
-
-                                        </div>
                                         <hr>
                                         <div class="row" sec:authorize="isAuthenticated()">
                                             <div sec class="col-sm-12">
